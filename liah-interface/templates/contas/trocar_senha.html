@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block titulo %}Senha - Liah{% endblock %}
+{% block conteudo %}
+{% include "contas/_voltar.html" with destino="contas:painel" texto="Voltar ao painel" %}
+<div class="caixa-central">
+  {% if tem_senha %}
+    <h1>Trocar senha</h1>
+  {% else %}
+    <h1>Criar uma senha</h1>
+    <p class="nota">Você entra com o Google. Se quiser, crie uma senha para também poder entrar com e-mail e senha.</p>
+  {% endif %}
+  <form method="post" class="formulario" novalidate>
+    {% csrf_token %}
+    {% include "contas/_erros_gerais.html" %}
+    {% for campo in form %}{% include "contas/_campo.html" with campo=campo %}{% endfor %}
+    <div class="botoes">
+      <button type="submit" class="botao">Salvar senha</button>
+      <a href="{% url 'contas:painel' %}" class="botao neutro">Cancelar</a>
+    </div>
+  </form>
+</div>
+{% endblock %}

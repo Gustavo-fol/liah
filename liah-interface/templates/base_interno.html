@@ -1,0 +1,35 @@
+{% load static %}
+<!DOCTYPE html>
+{# Área interna: SEMPRE escura, para a equipe saber na hora que está no "modo administrador". #}
+<html lang="pt-br" data-tema="escuro">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>{% block titulo %}Área interna{% endblock %} · Liah</title>
+  <link rel="stylesheet" href="{% static 'css/base.css' %}">
+  <link rel="stylesheet" href="{% static 'css/interno.css' %}">
+  <link rel="icon" href="{% static 'img/liah.svg' %}" type="image/svg+xml">
+  {# Confirmações ("Apagar?") ficam num arquivo .js: a CSP bloqueia onclick="..." escrito no HTML #}
+  <script src="{% static 'js/confirmar.js' %}" defer></script>
+</head>
+<body class="corpo-interno">
+  <header class="interno-topo">
+    <a class="interno-marca" href="{% url 'interno:painel' %}"><span class="ponto"></span> Liah · Área interna</a>
+    <nav class="interno-nav">
+      <a href="{% url 'interno:painel' %}">Painel</a>
+      <a href="{% url 'interno:relatorios' %}">Relatórios</a>
+      {% if user.is_superuser %}<a href="{% url 'interno:ia' %}">IA</a>{% endif %}
+      <a href="{% url 'interno:dicionario' %}">Dicionário</a>
+      <a href="{% url 'interno:laboratorio' %}">Laboratório</a>
+      <a href="{% url 'nucleo:chat' %}">Voltar ao site</a>
+    </nav>
+  </header>
+  <main class="interno-conteudo">
+    {% if messages %}
+      <ul class="mensagens">{% for m in messages %}<li class="msg {{ m.tags }}">{{ m }}</li>{% endfor %}</ul>
+    {% endif %}
+    {% block conteudo %}{% endblock %}
+  </main>
+</body>
+</html>

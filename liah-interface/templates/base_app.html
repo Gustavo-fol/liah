@@ -1,0 +1,19 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>{% block titulo %}Liah{% endblock %}</title>
+  {% include "_tema_cabecalho.html" %}
+  <link rel="stylesheet" href="{% static 'css/base.css' %}">
+  <link rel="stylesheet" href="{% static 'css/app.css' %}">
+</head>
+{# Base do APP (tela cheia, com barra lateral). As páginas de conta usam o base.html. #}
+<body class="corpo-app"
+      data-logado="{{ user.is_authenticated|yesno:'1,' }}"
+      data-url-preferencias="{% url 'nucleo:api_preferencias' %}">
+  {% block app %}{% endblock %}
+  {% block scripts %}{% endblock %}
+</body>
+</html>

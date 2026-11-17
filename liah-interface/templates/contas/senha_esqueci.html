@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block titulo %}Esqueci minha senha - Liah{% endblock %}
+{% block conteudo %}
+{% include "contas/_voltar.html" with destino="contas:entrar" texto="Voltar para o login" %}
+<div class="caixa-central">
+  <h1>Esqueci minha senha</h1>
+  <p class="nota">Digite o e-mail da sua conta. Vamos enviar um link para você criar uma senha nova.</p>
+  <form method="post" class="formulario" novalidate>
+    {% csrf_token %}
+    {% include "contas/_erros_gerais.html" %}
+    {% include "contas/_campo.html" with campo=form.email %}
+    <button type="submit" class="botao">Enviar link</button>
+  </form>
+  <p class="nota">Entrou com o Google? Você não precisa de senha: use "Continuar com Google".</p>
+
+  <div class="ajuda-recuperacao">
+    <h2>Outros problemas para entrar</h2>
+    <ul>
+      <li>Criou a conta mas <strong>não recebeu o e-mail de confirmação</strong>, ou o link
+          <strong>expirou</strong>? <a href="{% url 'contas:reenviar_confirmacao' %}">Enviar um novo link de confirmação</a></li>
+      <li>É menor de 18 e sua conta está <strong>aguardando o responsável</strong>? Peça para ele abrir
+          o e-mail da Liah (olhe também o spam).</li>
+    </ul>
+  </div>
+</div>
+{% endblock %}

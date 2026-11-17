@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block titulo %}Criar conta - Liah{% endblock %}
+{% block conteudo %}
+{% include "contas/_voltar.html" with destino="contas:entrar" texto="Voltar para o login" %}
+<h1>Criar conta na Liah</h1>
+<p class="sub">Para quem é a conta?</p>
+
+{% if google_ativo %}
+<div class="caixa-google">
+  <p class="nota">Tem 12 anos ou mais? Crie sua conta em um clique:</p>
+  {% include "contas/_botao_google.html" %}
+</div>
+{% endif %}
+
+<div class="cartoes">
+  <a class="cartao" href="{% url 'contas:cadastro_proprio' %}">
+    <h2>Para mim</h2>
+    <p>Para quem tem <strong>12 anos ou mais</strong>.</p>
+    <p class="nota">Se você tiver entre 12 e 17 anos, seu responsável vai receber um e-mail para autorizar.</p>
+  </a>
+
+  <a class="cartao" href="{% url 'contas:cadastro_dependente' %}">
+    <h2>Para outra pessoa</h2>
+    <p>Para crianças <strong>menores de 12 anos</strong>.</p>
+    <p class="nota">Só um responsável maior de 18, com conta ativa na Liah, pode criar. Você vai precisar entrar na sua conta primeiro.</p>
+  </a>
+</div>
+{% endblock %}

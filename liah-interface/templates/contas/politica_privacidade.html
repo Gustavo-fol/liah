@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% block titulo %}Política de Privacidade - Liah{% endblock %}
+{% block conteudo %}
+{% include "contas/_voltar.html" with destino="contas:painel" texto="Voltar" historico=True %}
+<article class="texto-legal">
+<div class="alerta">RASCUNHO para revisão jurídica. Versão 2026-11.</div>
+<h1>Política de Privacidade da Liah</h1>
+
+<h2>1. Quem cuida dos seus dados</h2>
+<p>Projeto Liah, projeto acadêmico de Engenharia da Computação. Contato para assuntos de privacidade:
+<strong>liahrobo.oficial@gmail.com</strong>.</p>
+
+<h2>2. Quais dados coletamos</h2>
+<ul>
+  <li><strong>Cadastro:</strong> nome, e-mail, data de nascimento e CPF.</li>
+  <li><strong>Responsável</strong> (para menores de 18): nome, e-mail e CPF.</li>
+  <li><strong>Conversas com a Liah:</strong> podem conter informações sobre suas emoções e saúde, que a LGPD
+      chama de <em>dados pessoais sensíveis</em>.</li>
+  <li><strong>Registros de acesso:</strong> data, hora e endereço IP de logins e ações de segurança.</li>
+  <li><strong>Login com Google</strong> (se você escolher): nome, e-mail e um identificador da sua conta Google.
+      Nunca recebemos sua senha do Google.</li>
+</ul>
+
+<h2>3. Para que usamos</h2>
+<ul>
+  <li>Criar e proteger sua conta e confirmar sua idade e identidade.</li>
+  <li>Conversar com você e manter seu histórico.</li>
+  <li>Identificar sinais de risco e indicar ajuda profissional.</li>
+  <li>Melhorar a IA, <strong>somente se você autorizar</strong>, com as conversas sem identificação.</li>
+  <li>Cumprir obrigações legais, como guardar registros de acesso (Marco Civil da Internet).</li>
+</ul>
+
+<h2>4. Bases legais (LGPD)</h2>
+<p>Dados emocionais: seu <strong>consentimento específico e destacado</strong> (art. 11). Dados de menores:
+no seu melhor interesse, com autorização do responsável (art. 14). Registros de acesso: obrigação legal.</p>
+
+<h2>5. Como protegemos</h2>
+<ul>
+  <li>O CPF é guardado <strong>criptografado</strong>, e a checagem de duplicidade usa uma impressão digital (HMAC).</li>
+  <li>As senhas são guardadas apenas como hash: ninguém consegue lê-las.</li>
+  <li>Limite de tentativas de login, registros de segurança e acesso administrativo restrito.</li>
+</ul>
+
+<h2>6. Com quem compartilhamos</h2>
+<p>Não vendemos nem compartilhamos seus dados para publicidade. Usamos prestadores de serviço:
+Google (envio de e-mails e login opcional) e, futuramente, um provedor de inteligência artificial,
+que será informado aqui antes de entrar em uso. Alguns podem armazenar dados fora do Brasil.</p>
+
+<h2>7. Por quanto tempo guardamos</h2>
+<p>Enquanto sua conta existir. Ao excluir a conta, apagamos cadastro, conversas e autorizações. Registros de
+segurança podem ser mantidos pelo prazo exigido em lei, sem ligação com a conta excluída.</p>
+
+<h2>8. Seus direitos</h2>
+<p>Você pode, a qualquer momento, em <em>Privacidade e meus dados</em>: ver e baixar seus dados, corrigir seu
+nome, revogar a autorização de uso para treino da IA e excluir sua conta. Para outros pedidos, use o e-mail acima.</p>
+
+<h2>9. Incidentes</h2>
+<p>Se ocorrer um incidente de segurança que possa causar risco a você, avisaremos você e a ANPD no prazo legal.</p>
+</article>
+{% endblock %}

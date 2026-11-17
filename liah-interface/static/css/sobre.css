@@ -1,0 +1,86 @@
+/* ============================================================ PÁGINA "SOBRE A LIAH"
+   Segue o visual do site anterior (fundo azul profundo, títulos com serifa, caminho com
+   caixas ligadas), mas usando as variáveis do tema: funciona no claro e no escuro. */
+.conteudo.pagina-sobre { max-width: 1080px; }
+.pagina-sobre h1, .pagina-sobre h2 { font-family: "Iowan Old Style", "Palatino Linotype", Georgia, serif; font-weight: 600; letter-spacing: -0.01em; }
+.pagina-sobre h1 { font-size: clamp(2.1rem, 5vw, 3rem); margin: 0 0 0.75rem; }
+.pagina-sobre h2 { font-size: clamp(1.5rem, 3.5vw, 2rem); margin: 0 0 0.5rem; }
+
+.sobre-bloco { padding: 2.5rem 0; border-bottom: 1px solid var(--borda); }
+.sobre-bloco:last-child { border-bottom: 0; }
+.sobre-sub { color: var(--suave); max-width: 60ch; margin: 0 0 1.25rem; }
+.sobre-lead { font-size: 1.15rem; line-height: 1.55; max-width: 52ch; }
+.sobre-citacao { margin: 1.25rem 0; padding: 0.25rem 0 0.25rem 1rem; border-left: 2px solid var(--ciano); color: var(--suave); }
+.pagina-sobre .botao.contorno { background: transparent; color: var(--azul); border: 1px solid var(--borda); }
+.pagina-sobre .botao.contorno:hover { background: var(--suave-fundo); }
+
+/* ---- apresentação com o robô em neon (como no primeiro vídeo) ---- */
+.sobre-hero { display: grid; gap: 2rem; align-items: center; }
+@media (min-width: 820px) { .sobre-hero { grid-template-columns: 1.4fr 1fr; } }
+.sobre-rosto { display: flex; flex-direction: column; align-items: center; gap: 0.6rem; padding: 2rem 0; }
+.sobre-cabeca {
+  width: 150px; height: 140px; border-radius: 50%; display: flex; align-items: center; justify-content: center; gap: 22px;
+  background: radial-gradient(circle at 50% 50%, #0d2a55 0%, #071730 70%);
+  border: 4px solid #e8f6ff; box-shadow: 0 0 18px #3ad1ff, inset 0 0 18px rgba(58, 209, 255, 0.35);
+}
+.sobre-cabeca .olho { width: 26px; height: 26px; border-radius: 50%; background: #7ff0ff; box-shadow: 0 0 14px #3ad1ff; animation: piscar 5s infinite; }
+.sobre-corpo {
+  width: 110px; height: 110px; border-radius: 18px; display: flex; flex-direction: column; align-items: center; justify-content: center;
+  background: linear-gradient(180deg, #1b7fd6, #135fae); color: #eaf8ff; font-weight: 700; letter-spacing: 0.08em;
+  border: 2px solid #6fe3ff; box-shadow: 0 0 16px rgba(58, 209, 255, 0.55);
+}
+.sobre-corpo small { font-weight: 400; letter-spacing: 0; opacity: 0.85; margin-top: 0.3rem; }
+@keyframes piscar { 0%, 94%, 100% { transform: scaleY(1); } 96% { transform: scaleY(0.1); } }
+
+/* ---- caminho clicável ---- */
+.caminho { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 0.75rem; position: relative; }
+.etapa {
+  text-align: left; cursor: pointer; min-height: 64px; padding: 0.7rem 0.9rem; border-radius: 10px;
+  background: var(--cartao); border: 1px solid var(--borda); color: var(--texto); font: inherit;
+  display: flex; flex-direction: column; gap: 0.2rem; transition: border-color 0.2s, box-shadow 0.3s, transform 0.2s;
+}
+.etapa strong { font-family: "Iowan Old Style", Georgia, serif; font-size: 1.1rem; font-weight: 600; }
+.etapa small { color: var(--suave); font-size: 0.82rem; }
+.etapa:hover { transform: translateY(-2px); }
+.etapa:focus-visible { outline: 2px solid var(--ciano); outline-offset: 2px; }
+.etapa[aria-selected="true"] { border-color: var(--azul); }
+.etapa.usada { border-color: var(--ciano); box-shadow: 0 0 0 1px var(--ciano), 0 0 16px rgba(92, 195, 255, 0.25); }
+.etapa.usada small { color: var(--ciano); }
+.explicacao { margin-top: 1rem; max-width: 680px; padding: 1rem 1.25rem; border-radius: 10px; background: var(--cartao); border: 1px solid var(--borda); }
+.explicacao p { margin: 0; line-height: 1.55; }
+.explicacao .ultima { margin-top: 0.8rem; padding-top: 0.8rem; border-top: 1px solid var(--borda); font-size: 0.9rem; color: var(--suave); }
+.explicacao .ultima strong { color: var(--texto); }
+
+/* ---- tabela "o que funciona" ---- */
+.tabela-rolagem { overflow-x: auto; border: 1px solid var(--borda); border-radius: 10px; background: var(--cartao); }
+.tabela-partes { width: 100%; min-width: 620px; border-collapse: collapse; font-size: 0.93rem; }
+.tabela-partes th, .tabela-partes td { padding: 0.75rem 1rem; text-align: left; border-bottom: 1px solid var(--borda); vertical-align: top; }
+.tabela-partes thead th { color: var(--suave); font-weight: 500; font-size: 0.85rem; }
+.tabela-partes tbody tr:last-child > * { border-bottom: 0; }
+.tabela-partes tbody th { font-weight: 600; white-space: nowrap; }
+.situacao { display: inline-block; padding: 0.15rem 0.55rem; border-radius: 999px; font-size: 0.78rem; font-weight: 600; white-space: nowrap; background: var(--suave-fundo); color: var(--suave); }
+.situacao-funcionando { background: var(--ok-fundo); color: var(--ok); }
+.situacao-em-teste, .situacao-simulado { background: rgba(58, 167, 232, 0.15); color: var(--azul); }
+.situacao-configurando, .situacao-em-revisao, .situacao-desligado { background: rgba(255, 179, 64, 0.16); color: #b26a00; }
+[data-tema="escuro"] .situacao-configurando, [data-tema="escuro"] .situacao-em-revisao, [data-tema="escuro"] .situacao-desligado { color: #ffc46b; }
+
+/* ---- linha do tempo ---- */
+.linha-tempo { list-style: none; padding: 0; margin: 0; }
+.linha-tempo li { display: flex; gap: 1rem; position: relative; padding-bottom: 1.25rem; }
+.linha-tempo li:not(:last-child)::before { content: ""; position: absolute; left: 15px; top: 34px; bottom: 4px; width: 2px; background: var(--borda); }
+.linha-tempo .numero {
+  flex: 0 0 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
+  font-size: 0.85rem; font-weight: 700; background: var(--suave-fundo); color: var(--suave); border: 1px solid var(--borda);
+}
+.linha-tempo .agora .numero { background: var(--ciano); color: #062038; border-color: var(--ciano); box-shadow: 0 0 12px rgba(92, 195, 255, 0.5); }
+.linha-tempo .feita .numero { background: var(--ok-fundo); color: var(--ok); border-color: var(--ok); }
+.linha-tempo strong { font-family: "Iowan Old Style", Georgia, serif; font-size: 1.1rem; font-weight: 600; }
+.linha-tempo p { margin: 0.2rem 0 0; color: var(--suave); }
+.selo-agora, .selo-feita { margin-left: 0.4rem; padding: 0.1rem 0.5rem; border-radius: 999px; font-size: 0.75rem; font-weight: 600; vertical-align: middle; }
+.selo-agora { background: rgba(92, 195, 255, 0.18); color: var(--ciano); }
+.selo-feita { background: var(--ok-fundo); color: var(--ok); }
+
+@media (prefers-reduced-motion: reduce) {
+  .sobre-cabeca .olho { animation: none; }
+  .etapa { transition: none; }
+}

@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block titulo %}Nova senha - Liah{% endblock %}
+{% block conteudo %}
+<div class="caixa-central">
+  {% if validlink %}
+    <h1>Crie sua nova senha</h1>
+    <form method="post" class="formulario" novalidate>
+      {% csrf_token %}
+      {% include "contas/_erros_gerais.html" %}
+      {% for campo in form %}{% include "contas/_campo.html" with campo=campo %}{% endfor %}
+      <button type="submit" class="botao">Salvar nova senha</button>
+    </form>
+  {% else %}
+    <h1>Link inválido ou expirado</h1>
+    <p>Este link já foi usado ou passou da validade.</p>
+    <a class="botao" href="{% url 'contas:senha_esqueci' %}">Pedir um novo link</a>
+  {% endif %}
+</div>
+{% endblock %}

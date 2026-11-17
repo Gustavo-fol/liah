@@ -1,0 +1,47 @@
+# MODELO: copie este bloco para o arquivo da categoria e preencha.
+# Arquivos que começam com "_" são IGNORADOS pela importação.
+
+categoria = "outro"   # luto, ansiedade, tristeza, ideacao, autolesao, isolamento, estresse,
+                      # autoestima, sono, relacionamentos, violencia, outro
+
+[[contexto]]
+id = "categoria-situacao-curta"          # único, sem espaço, nunca mude depois
+titulo = "Nome claro da situação"
+nivel_risco = "nenhum"                   # nenhum | atencao | alto
+encaminhamento = "nenhum"                # nenhum | psicologo | psiquiatra | emergencia
+aprovado = false                         # o psicólogo muda para true
+revisado_por = ""                        # "Psic. Nome (CRP), data"
+observacoes_psicologo = ""
+
+situacao = """
+Descreva a situação de vida em 2 a 4 frases: o que está acontecendo com a pessoa,
+por que isso pesa e o que costuma vir junto.
+"""
+
+# Como a pessoa FALA disso (gírias, abreviações, erros comuns de digitação também ajudam).
+palavras_chave = ["palavra", "outra palavra", "expressão de duas palavras",]
+
+# O que ela diz com todas as letras.
+sinais_diretos = ["...",]
+
+# O que aparece SEM ela dizer: mudança de rotina, tom, o que evita, ironia...
+entrelinhas = ["...",]
+
+# Frases fictícias em que o assunto é dito diretamente.
+falas_diretas = ["...",]
+
+# Frases fictícias em que o assunto aparece SÓ nas entrelinhas (as mais importantes para o treino).
+falas_sutis = ["...",]
+
+# Frases PARECIDAS que NÃO são este contexto (evita alarme falso).
+nao_confundir = ["...",]
+
+como_responder = """
+O que a Liah deve fazer, em ordem: acolher, validar, perguntar, quando e como encaminhar.
+"""
+
+evitar = ["frases ou atitudes que a Liah nunca deve ter neste contexto",]
+
+resposta_modelo = """
+Uma resposta ideal, curta (até 5 frases), no tom da Liah. A IA usa como exemplo, não copia.
+"""

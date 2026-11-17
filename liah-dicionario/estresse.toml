@@ -1,0 +1,107 @@
+categoria = "estresse"
+
+[[contexto]]
+id = "estresse-esgotamento-trabalho"
+titulo = "Esgotamento no trabalho (burnout)"
+nivel_risco = "atencao"
+encaminhamento = "psicologo"
+aprovado = false
+revisado_por = ""
+
+situacao = """
+Exaustão física e emocional ligada ao trabalho: carga excessiva, cobrança, chefe abusivo, falta de
+pausas. A pessoa fica cínica, irritada, sente que nada do que faz é suficiente, e o corpo reclama
+(dor de cabeça, gastrite, insônia).
+"""
+
+palavras_chave = ["burnout", "esgotado", "esgotada", "exausto", "exausta", "trabalho", "chefe", "patrao", "hora extra",
+  "domingo a noite", "segunda feira", "metas", "cobranca", "demissao", "nao aguento mais trabalhar",]
+
+sinais_diretos = ["diz que está esgotado com o trabalho", "fala em burnout",]
+
+entrelinhas = [
+  "angústia no domingo à noite pensando na segunda",
+  "não consegue se desligar, responde mensagens do trabalho de madrugada",
+  "fala do trabalho com ironia e desânimo",
+  "sintomas físicos frequentes (gastrite, dor de cabeça)",
+  "chora no carro ou no banheiro do trabalho",
+]
+
+falas_diretas = ["acho que tô com burnout", "não aguento mais meu trabalho",]
+
+falas_sutis = [
+  "domingo à noite já começa a dar aquele aperto",
+  "respondi email do chefe 1 da manhã de novo",
+  "faço tudo e ainda assim parece que nunca é suficiente",
+  "minha gastrite voltou, o médico disse que é nervoso",
+  "chorei no banheiro da empresa hoje",
+]
+
+nao_confundir = ["meu trabalho tá corrido essa semana", "como pedir aumento pro meu chefe?",]
+
+como_responder = """
+1. Validar o cansaço como real, não como fraqueza.
+2. Ajudar a identificar o que é possível mudar (pausas, limites de horário, conversar com o RH).
+3. Lembrar de sono, alimentação e descanso.
+4. Sugerir psicólogo e, se houver sintomas físicos ou muito sofrimento, médico (o burnout pode
+   dar direito a afastamento).
+"""
+
+evitar = ["'trabalho é assim mesmo'", "'é só tirar férias'",]
+
+resposta_modelo = """
+O que você descreve parece um esgotamento de verdade, não falta de força. O corpo e a cabeça estão
+pedindo pausa. Existe algum limite pequeno que você conseguiria colocar já, como não responder mensagens
+depois de certo horário? Vale também conversar com um psicólogo e com um médico: esgotamento tem tratamento.
+"""
+
+[[contexto]]
+id = "estresse-sobrecarga-cuidador"
+titulo = "Sobrecarga de quem cuida de alguém (pais, filhos, doentes)"
+nivel_risco = "atencao"
+encaminhamento = "psicologo"
+aprovado = false
+revisado_por = ""
+
+situacao = """
+A pessoa cuida de um familiar doente, de filhos pequenos, de irmãos ou dos pais, muitas vezes sozinha.
+Sente culpa por se cansar, não tem tempo para si e esconde o próprio sofrimento.
+"""
+
+palavras_chave = ["cuido", "cuidar", "cuidadora", "cuidador", "minha mae doente", "meu pai doente", "acamado",
+  "alzheimer", "meus irmaos", "bebe", "nao tenho tempo pra mim", "sozinha com tudo", "sozinho com tudo",]
+
+sinais_diretos = ["diz que está sobrecarregada cuidando de alguém",]
+
+entrelinhas = [
+  "culpa por sentir raiva ou cansaço de quem cuida",
+  "não lembra a última vez que fez algo por si",
+  "ninguém da família ajuda",
+  "diz que 'não pode adoecer'",
+]
+
+falas_diretas = ["tô exausta de cuidar da minha mãe sozinha",]
+
+falas_sutis = [
+  "às vezes eu fico com raiva dela e depois me sinto um monstro",
+  "faz anos que eu não sei o que é um fim de semana",
+  "meus irmãos só aparecem no natal",
+  "eu não posso ficar doente, senão quem cuida?",
+]
+
+nao_confundir = ["cuido das plantas aqui de casa", "vou cuidar do meu sobrinho no sábado",]
+
+como_responder = """
+1. Acolher a culpa: cansaço e até raiva são humanos e não anulam o amor.
+2. Incentivar a pedir ajuda concreta (dividir tarefas, rede de apoio, CRAS, UBS).
+3. Lembrar que quem cuida também precisa ser cuidado.
+4. Sugerir psicólogo ou grupos de cuidadores.
+"""
+
+evitar = ["'é sua obrigação'", "'pelo menos ela está viva'",]
+
+resposta_modelo = """
+Cuidar de alguém sozinha por tanto tempo esgota qualquer pessoa, e sentir raiva às vezes não te faz
+um monstro: te faz humana e cansada. Você também merece cuidado. Tem alguém, da família ou de um
+serviço como a UBS ou o CRAS, que poderia dividir um pouco desse peso com você?
+"""

@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block conteudo %}
+<div class="caixa-central">
+  {% if invalido %}
+    <h1>Link inválido ou expirado</h1>
+    <p>Peça para o menor fazer o cadastro novamente.</p>
+
+  {% elif autorizacao.autorizada_em %}
+    <h1>Autorização registrada</h1>
+    <p>Obrigado, {{ autorizacao.nome_responsavel }}. A conta de {{ autorizacao.menor.first_name }} foi autorizada.</p>
+
+  {% elif autorizacao.negada_em %}
+    <h1>Cadastro não autorizado</h1>
+    <p>A conta de {{ autorizacao.menor.first_name }} foi bloqueada e não poderá ser usada.</p>
+
+  {% else %}
+    <h1>Pedido de autorização</h1>
+    <p><strong>{{ autorizacao.menor.get_full_name }}</strong> ({{ autorizacao.menor.idade }} anos,
+       {{ autorizacao.menor.email }}) criou uma conta na Liah e informou você,
+       <strong>{{ autorizacao.nome_responsavel }}</strong>, como responsável.</p>
+
+    <div class="alerta">
+      <p>A Liah é uma inteligência artificial de apoio emocional. Ela <strong>não substitui</strong>
+         psicólogos nem atendimento de emergência.</p>
+      <p>Ao autorizar, você permite que a Liah trate o conteúdo emocional das conversas deste menor
+         (dado sensível, LGPD art. 11), conforme a Política de Privacidade.</p>
+    </div>
+
+    <form method="post" class="botoes">
+      {% csrf_token %}
+      <button type="submit" name="acao" value="autorizar" class="botao">Autorizo</button>
+      <button type="submit" name="acao" value="negar" class="botao secundario">Não autorizo</button>
+    </form>
+  {% endif %}
+</div>
+{% endblock %}

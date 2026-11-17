@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block titulo %}Excluir conta da criança - Liah{% endblock %}
+{% block conteudo %}
+{% include "contas/_voltar.html" with destino="contas:painel" texto="Voltar ao painel" %}
+<h1>Excluir a conta de {{ crianca.first_name }}</h1>
+<p class="sub">Esta ação é <strong>permanente</strong> e não pode ser desfeita.</p>
+
+<section class="bloco perigo">
+  <h2>O que será apagado</h2>
+  <ul>
+    <li>Os dados de cadastro de {{ crianca.get_full_name }} ({{ crianca.email }})</li>
+    <li>Todo o histórico de conversas dela com a Liah</li>
+    <li>As autorizações que você deu para esta conta</li>
+  </ul>
+</section>
+
+<form method="post" class="formulario" novalidate>
+  {% csrf_token %}
+  {% include "contas/_erros_gerais.html" %}
+  <fieldset>
+    <legend>Confirme que é você (responsável)</legend>
+    {% if form.senha %}{% include "contas/_campo.html" with campo=form.senha %}{% endif %}
+    {% include "contas/_campo.html" with campo=form.confirmacao %}
+  </fieldset>
+  <div class="botoes">
+    <button type="submit" class="botao perigo">Excluir a conta de {{ crianca.first_name }}</button>
+    <a href="{% url 'contas:painel' %}" class="botao neutro">Cancelar</a>
+  </div>
+</form>
+{% endblock %}

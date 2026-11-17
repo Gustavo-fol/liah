@@ -1,0 +1,51 @@
+{% extends "base_interno.html" %}
+{% block titulo %}Laboratório{% endblock %}
+{% block conteudo %}
+<h1>Laboratório das duas IAs</h1>
+<p class="nota">1) A IA <strong>secundária</strong> escreve uma fala fictícia que expressa a regra só nas entrelinhas.
+   2) A IA <strong>principal</strong> lê o dicionário e analisa a fala <strong>sem saber</strong> qual era a regra.
+   3) O sistema marca se ela acertou. Regras com muitos erros precisam de sinais mais claros.</p>
+
+{% if not cfg.principal_pronta or not cfg.secundaria_pronta %}
+  <div class="alerta erro-geral">As duas IAs precisam estar configuradas.{% if user.is_superuser %} <a href="{% url 'interno:ia' %}">Configurar</a>{% endif %}</div>
+{% endif %}
+
+<form method="post" class="form-linha painel-bloco">
+  {% csrf_token %}
+  <select name="regra" required>
+    {% for r in regras %}<option value="{{ r.pk }}">{{ r.get_categoria_display }}: {{ r.titulo }}</option>{% empty %}<option value="">Cadastre regras primeiro</option>{% endfor %}
+  </select>
+  <button type="submit" class="botao">Gerar fala e analisar</button>
+</form>
+
+{% if estatisticas %}
+<section class="painel-bloco">
+  <h2>Taxa de acerto por regra</h2>
+  <table class="tabela">
+    <thead><tr><th>Regra</th><th>Testes</th><th>Acertos</th></tr></thead>
+    <tbody>{% for e in estatisticas %}
+      <tr><td>{{ e.titulo }}</td><td>{{ e.total }}</td>
+          <td><span class="selo {% if e.acertos == e.total %}selo-aprovada{% else %}selo-atencao{% endif %}">{{ e.acertos }}/{{ e.total }}</span></td></tr>
+    {% endfor %}</tbody>
+  </table>
+</section>
+{% endif %}
+
+<h2>Últimos testes</h2>
+{% for ex in exemplos %}
+  <article class="exemplo {% if ex.acertou %}certo{% elif ex.acertou == False %}errado{% endif %}">
+    <header>
+      <strong>Regra-alvo:</strong> {{ ex.regra.titulo }}
+      {% if ex.acertou %}<span class="selo selo-aprovada">acertou</span>{% elif ex.acertou == False %}<span class="selo selo-alto">errou</span>{% endif %}
+      <small class="nota">{{ ex.criado_em|date:"d/m H:i" }} · gerou: {{ ex.gerado_por }} · analisou: {{ ex.analisado_por }}</small>
+    </header>
+    <blockquote>{{ ex.texto }}</blockquote>
+    {% if ex.analise %}
+      <p class="nota"><strong>Análise:</strong> regras {{ ex.analise.regras|join:", "|default:"nenhuma" }} ·
+        risco {{ ex.analise.nivel_risco }} · encaminhamento {{ ex.analise.encaminhamento }}<br>{{ ex.analise.justificativa }}</p>
+    {% endif %}
+  </article>
+{% empty %}
+  <p class="nota">Nenhum teste ainda.</p>
+{% endfor %}
+{% endblock %}

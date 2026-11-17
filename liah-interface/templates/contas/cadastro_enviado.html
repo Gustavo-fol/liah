@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block conteudo %}
+<div class="caixa-central">
+  <h1>Quase lá!</h1>
+  <p>Enviamos um link de confirmação para o seu e-mail. Clique nele para ativar sua conta.</p>
+  <p class="nota">Se você tem menos de 18 anos, seu responsável também recebeu um e-mail e precisa autorizar antes de você entrar.</p>
+  <a class="botao" href="{% url 'contas:entrar' %}">Ir para o login</a>
+  <p class="nota">Não chegou em alguns minutos? Olhe a pasta de spam ou
+     <a href="{% url 'contas:reenviar_confirmacao' %}">peça um novo link</a>.</p>
+</div>
+{% endblock %}

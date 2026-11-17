@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block titulo %}Excluir conta - Liah{% endblock %}
+{% block conteudo %}
+{% include "contas/_voltar.html" with destino="contas:privacidade" texto="Voltar" %}
+<h1>Excluir minha conta</h1>
+<p class="sub">Esta ação é <strong>permanente</strong> e não pode ser desfeita.</p>
+
+<section class="bloco perigo">
+  <h2>O que será apagado</h2>
+  <ul>
+    <li>Seus dados de cadastro (nome, e-mail, CPF, data de nascimento)</li>
+    <li>Seu histórico de conversas com a Liah</li>
+    <li>Seus {{ resumo.consentimentos }} registro(s) de autorização</li>
+  </ul>
+
+  {% if resumo.dependentes %}
+    <div class="alerta erro-geral">
+      <p><strong>Atenção:</strong> você é responsável por {{ resumo.dependentes|length }} conta(s) de criança.
+         Elas também serão <strong>excluídas</strong>:</p>
+      <ul>{% for d in resumo.dependentes %}<li>{{ d.get_full_name }} ({{ d.email }})</li>{% endfor %}</ul>
+    </div>
+  {% endif %}
+
+  {% if user.precisa_autorizacao_responsavel %}
+    <p class="nota">Como você é menor de 18 anos, seu responsável vai receber um e-mail avisando da exclusão.</p>
+  {% endif %}
+</section>
+
+<form method="post" class="formulario" novalidate>
+  {% csrf_token %}
+  {% include "contas/_erros_gerais.html" %}
+  <fieldset>
+    <legend>Confirme que é você</legend>
+    {% if form.senha %}{% include "contas/_campo.html" with campo=form.senha %}{% endif %}
+    {% include "contas/_campo.html" with campo=form.confirmacao %}
+  </fieldset>
+  <div class="botoes">
+    <button type="submit" class="botao perigo">Excluir minha conta para sempre</button>
+    <a href="{% url 'contas:painel' %}" class="botao neutro">Cancelar</a>
+  </div>
+</form>
+{% endblock %}

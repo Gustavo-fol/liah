@@ -1,0 +1,31 @@
+{% extends "admin/base.html" %}
+{% comment %}
+  ADMIN DO DJANGO com a cara da Liah e SEMPRE ESCURO (como a área interna).
+  O Django procura este arquivo primeiro na nossa pasta de templates; achando, usa o nosso.
+  O admin escolhe o tema pelo "theme" salvo no navegador: aqui fixamos "dark" e escondemos o botão.
+{% endcomment %}
+{% block title %}{% if subtitle %}{{ subtitle }} | {% endif %}{{ title }} | Liah · Administração{% endblock %}
+
+{% block extrahead %}{{ block.super }}
+<meta name="robots" content="noindex, nofollow">
+<script nonce="{{ csp_nonce }}">
+  try { localStorage.setItem("theme", "dark"); } catch (e) {}
+  document.documentElement.dataset.theme = "dark";
+</script>
+<style>
+  .theme-toggle { display: none !important; }
+  html[data-theme="dark"], :root {
+    --primary: #1f56a8; --secondary: #173f7c; --header-bg: #0b1528; --header-color: #e4ecf9;
+    --header-link-color: #9db0cf; --breadcrumbs-bg: #101e38; --link-fg: #5cc3ff; --link-hover-color: #a8dcff;
+    --body-bg: #070d1a; --darkened-bg: #0b1528; --selected-bg: #162a4b; --selected-row: #10294a;
+    --button-bg: #1f56a8; --button-hover-bg: #3a78cf; --default-button-bg: #4d8fe8; --default-button-hover-bg: #3a78cf;
+    --hairline-color: #22395f; --border-color: #22395f; --body-fg: #e4ecf9; --body-quiet-color: #9db0cf;
+  }
+</style>
+{% endblock %}
+
+{% block branding %}
+<div id="site-name"><a href="{% url 'admin:index' %}">Liah · Administração</a></div>
+{% endblock %}
+
+{% block nav-global %}{% endblock %}

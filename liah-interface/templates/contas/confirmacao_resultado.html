@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block conteudo %}
+<div class="caixa-central">
+  {% if ok %}
+    <h1>E-mail confirmado!</h1>
+    {% if usuario.situacao == "ativa" %}
+      <p>Sua conta está ativa. Você já pode entrar.</p>
+      <a class="botao" href="{% url 'contas:entrar' %}">Entrar</a>
+    {% elif usuario.situacao == "pendente_responsavel" %}
+      <p>Agora falta só o seu responsável autorizar pelo link que ele recebeu no e-mail.</p>
+    {% endif %}
+  {% else %}
+    <h1>Link inválido ou expirado</h1>
+    <p>Este link já foi usado ou passou da validade.</p>
+    <a class="botao" href="{% url 'contas:reenviar_confirmacao' %}">Pedir um novo link</a>
+    <p class="nota">Se você já confirmou antes, é só <a href="{% url 'contas:entrar' %}">entrar</a>.</p>
+  {% endif %}
+</div>
+{% endblock %}

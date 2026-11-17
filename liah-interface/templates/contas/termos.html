@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% block titulo %}Termos de Uso - Liah{% endblock %}
+{% block conteudo %}
+{% include "contas/_voltar.html" with destino="contas:painel" texto="Voltar" historico=True %}
+<article class="texto-legal">
+<div class="alerta">RASCUNHO para revisão jurídica. Versão 2026-11.</div>
+<h1>Termos de Uso da Liah</h1>
+
+<h2>1. O que é a Liah</h2>
+<p>A Liah é um projeto acadêmico de inteligência artificial de apoio emocional, desenvolvido como protótipo
+de um robô interativo. Ela conversa com você, guarda o histórico das conversas e pode sugerir que você procure
+ajuda profissional.</p>
+
+<h2>2. A Liah não substitui profissionais</h2>
+<p>A Liah <strong>não é psicóloga, psiquiatra nem médica</strong>, não faz diagnósticos e não prescreve tratamentos.
+Ela é uma ferramenta de acolhimento e orientação inicial.</p>
+<div class="alerta erro-geral">
+  <p><strong>Em emergência, não use a Liah.</strong> Ligue para o <strong>CVV 188</strong> (24 horas, gratuito),
+     o <strong>SAMU 192</strong> ou vá ao pronto-socorro mais próximo.</p>
+</div>
+
+<h2>3. Quem pode usar</h2>
+<ul>
+  <li>Maiores de 18 anos: cadastro próprio.</li>
+  <li>De 12 a 17 anos: cadastro próprio, liberado somente após a autorização de um responsável legal.</li>
+  <li>Menores de 12 anos: somente com conta criada e gerenciada por um responsável legal.</li>
+</ul>
+
+<h2>4. Sua conta</h2>
+<p>Você deve informar dados verdadeiros e manter sua senha em segredo. Você é responsável pelo que acontece
+na sua conta. Avise-nos se suspeitar de uso indevido.</p>
+
+<h2>5. Uso aceitável</h2>
+<p>Não é permitido usar a Liah para assediar pessoas, tentar invadir o sistema, se passar por outra pessoa
+ou cadastrar dados de terceiros sem autorização.</p>
+
+<h2>6. Limitações</h2>
+<p>A Liah é um protótipo em desenvolvimento: as respostas podem conter erros e o serviço pode ficar
+indisponível. Não tome decisões importantes de saúde baseadas apenas nas respostas da Liah.</p>
+
+<h2>7. Encerramento</h2>
+<p>Você pode excluir sua conta a qualquer momento em <em>Privacidade e meus dados</em>. Contas que violarem
+estes termos podem ser bloqueadas.</p>
+
+<h2>8. Mudanças nestes termos</h2>
+<p>Se os termos mudarem, avisaremos e pediremos um novo aceite quando necessário.</p>
+
+<h2>9. Contato</h2>
+<p>liahrobo.oficial@gmail.com</p>
+</article>
+{% endblock %}

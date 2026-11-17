@@ -1,0 +1,14 @@
+{% comment %}
+  Seta de voltar, reaproveitada em várias páginas.
+  Uso: {% include "contas/_voltar.html" with destino="contas:painel" texto="Voltar ao painel" %}
+
+  Por que um link FIXO (destino) e não o "voltar" do navegador?
+  - depois de enviar um formulário, o "voltar" do navegador tenta reenviar os dados;
+  - quem chegou por um link de e-mail sairia da Liah.
+  Com historico=True (páginas de leitura, como os Termos), tenta voltar pelo histórico
+  e, se a página foi aberta numa aba nova, vai para o destino.
+{% endcomment %}
+<a class="voltar" href="{% url destino %}"
+   {% if historico %}onclick="if (window.history.length > 1) { window.history.back(); return false; }"{% endif %}>
+  <span aria-hidden="true">&larr;</span> {{ texto|default:"Voltar" }}
+</a>

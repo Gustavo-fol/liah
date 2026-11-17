@@ -1,0 +1,63 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8">
+  <!-- Esta linha é o que faz o site se adaptar ao celular -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>{% block titulo %}Liah{% endblock %}</title>
+  {# Open Graph: o "cartão" que aparece quando alguém compartilha o link no WhatsApp/redes #}
+  <meta property="og:title" content="Liah · robô de apoio emocional">
+  <meta property="og:description" content="Converse com a Liah, protótipo de robô interativo com inteligência artificial.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="{{ request.scheme }}://{{ request.get_host }}{% static 'img/liah.svg' %}">
+  {% include "_tema_cabecalho.html" %}
+  <link rel="stylesheet" href="{% static 'css/base.css' %}">
+  <script src="{% static 'js/confirmar.js' %}" defer></script>
+  {% block estilos %}{% endblock %}
+</head>
+<body data-logado="{{ user.is_authenticated|yesno:'1,' }}" data-url-preferencias="{% url 'nucleo:api_preferencias' %}">
+  <header class="topo">
+    <a href="{% url 'nucleo:chat' %}" class="marca" aria-label="Liah, ir para a conversa">
+      <span class="marca-icone" aria-hidden="true"><span></span><span></span></span>
+      <span>Liah</span>
+    </a>
+    {# No celular o menu fica escondido atrás do ☰ (o js/topo.js abre e fecha) #}
+    <button type="button" class="botao-menu-topo" id="botao-menu-topo" aria-expanded="false"
+            aria-controls="menu-topo" aria-label="Abrir o menu">&#9776;</button>
+    <nav class="menu-topo" id="menu-topo" aria-label="Menu principal">
+      <a href="{% url 'nucleo:chat' %}">Conversar</a>
+      <a href="{% url 'nucleo:sobre' %}">Sobre a Liah</a>
+      {% if user.is_authenticated %}
+        <a href="{% url 'contas:painel' %}">Minha conta</a>
+        {# Sair é POST (com csrf_token) para que um link malicioso não te deslogue #}
+        <form method="post" action="{% url 'contas:sair' %}" class="inline">
+          {% csrf_token %}
+          <button type="submit" class="link-menu">Sair</button>
+        </form>
+      {% else %}
+        <a href="{% url 'contas:entrar' %}">Entrar</a>
+        <a href="{% url 'contas:cadastro' %}" class="botao pequeno">Criar conta</a>
+      {% endif %}
+      <button type="button" class="botao-tema" data-alternar-tema aria-label="Alternar tema claro ou escuro" title="Tema claro/escuro">&#9680;</button>
+    </nav>
+  </header>
+
+  <main class="conteudo {% block classe_main %}{% endblock %}">
+    {% if messages %}
+      <ul class="mensagens">
+        {% for m in messages %}<li class="msg {{ m.tags }}">{{ m }}</li>{% endfor %}
+      </ul>
+    {% endif %}
+    {% block conteudo %}{% endblock %}
+  </main>
+
+  <footer class="rodape">
+    <a href="{% url 'contas:termos' %}">Termos de Uso</a> ·
+    <a href="{% url 'contas:politica_privacidade' %}">Política de Privacidade</a> ·
+    <span>Em crise? Ligue <strong>188</strong> (CVV)</span>
+  </footer>
+  <script src="{% static 'js/topo.js' %}" defer></script>
+  {% block scripts %}{% endblock %}
+</body>
+</html>

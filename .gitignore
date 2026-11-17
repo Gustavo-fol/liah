@@ -1,0 +1,29 @@
+# Ambiente Python
+.venv/
+__pycache__/
+*.pyc
+
+# Segredos
+.env
+
+# Banco de dados e backups (dados reais de pessoas)
+liah-bd/
+
+# Arquivos de treino gerados (dá para gerar de novo com: python manage.py exportar_treino)
+liah-dicionario/exportacoes/
+
+# Arquivos gerados pelo collectstatic no servidor (dá para gerar de novo)
+staticfiles/
+
+# Logs e configurações do editor
+*.log
+.vscode/
+.idea/
+
+# Ferramentas de teste/qualidade
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Arquivos baixados do chat (n�o fazem parte do c�digo)
+Claude outputs/

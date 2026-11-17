@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+{% block titulo %}Privacidade e meus dados - Liah{% endblock %}
+{% block conteudo %}
+{% include "contas/_voltar.html" with destino="contas:painel" texto="Voltar ao painel" %}
+<h1>Privacidade e meus dados</h1>
+<p class="sub">Seus direitos pela LGPD. Leia a <a href="{% url 'contas:politica_privacidade' %}">Política de Privacidade</a>.</p>
+
+<section class="bloco">
+  <h2>Minhas autorizações</h2>
+  <ul class="dados">
+    {% for c in consentimentos %}
+      <li><span>{{ c.get_tipo_display }}</span>
+        {% if c.ativo %}Ativa desde {{ c.aceito_em|date:"d/m/Y" }}{% else %}Revogada em {{ c.revogado_em|date:"d/m/Y" }}{% endif %}
+        {% if c.concedido_por_id %}<small class="nota">(dada pelo responsável)</small>{% endif %}
+      </li>
+    {% empty %}
+      <li>Nenhuma autorização registrada.</li>
+    {% endfor %}
+  </ul>
+
+  {% if gerenciada %}
+    <p class="nota">Sua conta é gerenciada pelo seu responsável. Peça para ele alterar as autorizações.</p>
+  {% else %}
+    <form method="post" class="botoes">
+      {% csrf_token %}
+      {% if treino_ativo %}
+        <button type="submit" name="acao" value="revogar_treino" class="botao neutro">Parar de usar minhas conversas para treinar a IA</button>
+      {% else %}
+        <button type="submit" name="acao" value="conceder_treino" class="botao neutro">Permitir usar minhas conversas (sem identificação) para treinar a IA</button>
+      {% endif %}
+    </form>
+
+    {# LGPD: retirar a autorização de dados emocionais a qualquer momento (e, se quiser, apagar tudo) #}
+    <form method="post" class="botoes">
+      {% csrf_token %}
+      {% if dados_ativo %}
+        <label class="nota"><input type="checkbox" name="apagar_conversas" value="1"> Apagar também todas as minhas conversas</label>
+        <button type="submit" name="acao" value="revogar_dados" class="botao secundario"
+                data-confirmar="Retirar a autorização? A Liah vai parar de guardar suas conversas.">Retirar autorização de dados emocionais</button>
+      {% else %}
+        <button type="submit" name="acao" value="conceder_dados" class="botao neutro">Autorizar a Liah a guardar minhas conversas (dados emocionais)</button>
+      {% endif %}
+    </form>
+    <p class="nota">Sem a autorização de dados emocionais, a Liah não guarda conversas da sua conta.
+       Você pode autorizar de novo quando quiser.</p>
+  {% endif %}
+</section>
+
+<section class="bloco">
+  <h2>Baixar meus dados</h2>
+  <p class="nota">Um arquivo (JSON) com tudo o que a Liah guarda sobre você: cadastro, CPF, autorizações e registros de acesso.</p>
+  <form method="post" action="{% url 'contas:baixar_meus_dados' %}" class="formulario" novalidate>
+    {% csrf_token %}
+    {% if form.senha %}{% include "contas/_campo.html" with campo=form.senha %}{% endif %}
+    <button type="submit" class="botao">Baixar meus dados</button>
+  </form>
+</section>
+
+<section class="bloco perigo">
+  <h2>Excluir conta</h2>
+  {% if gerenciada %}
+    <p class="nota">Só o seu responsável pode excluir esta conta.</p>
+  {% else %}
+    <a class="botao perigo" href="{% url 'contas:excluir_conta' %}">Excluir minha conta</a>
+  {% endif %}
+</section>
+{% endblock %}

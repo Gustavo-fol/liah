@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block titulo %}Reenviar confirmação - Liah{% endblock %}
+{% block conteudo %}
+{% include "contas/_voltar.html" with destino="contas:entrar" texto="Voltar para o login" %}
+<div class="caixa-central">
+  <h1>Reenviar e-mail de confirmação</h1>
+  <p class="nota">Não recebeu o link para ativar sua conta? Digite seu e-mail que mandamos de novo.</p>
+  <form method="post" class="formulario" novalidate>
+    {% csrf_token %}
+    {% include "contas/_campo.html" with campo=form.email %}
+    <button type="submit" class="botao">Reenviar</button>
+  </form>
+</div>
+{% endblock %}

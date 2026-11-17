@@ -1,0 +1,14 @@
+{
+  "name": "Liah · apoio emocional",
+  "short_name": "Liah",
+  "description": "Converse com a Liah, protótipo de robô de apoio emocional com inteligência artificial.",
+  "lang": "pt-BR",
+  "start_url": "/chat/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#070d1a",
+  "theme_color": "#1f56a8",
+  "icons": [
+    { "src": "/static/img/liah.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }
+  ]
+}

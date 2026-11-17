@@ -1,0 +1,164 @@
+categoria = "tristeza"
+
+[[contexto]]
+id = "tristeza-anedonia"
+titulo = "Perda de prazer e vazio (sinais de depressão)"
+nivel_risco = "atencao"
+encaminhamento = "psicologo"
+aprovado = false
+revisado_por = ""
+
+situacao = """
+A pessoa deixou de sentir prazer no que gostava (jogos, música, amigos, hobbies) e descreve um vazio,
+mais do que tristeza. Dura semanas. Pode vir com cansaço, mudança de apetite e de sono, e dificuldade
+de concentração. É um dos sinais centrais de depressão.
+"""
+
+palavras_chave = ["vazio", "vazia", "nada tem graca", "sem graca", "nao sinto nada", "anestesiado", "anestesiada",
+  "desanimo", "desanimado", "desanimada", "sem vontade", "nao tenho vontade", "depressao", "deprimido", "deprimida",
+  "tanto faz", "piloto automatico",]
+
+sinais_diretos = ["diz que nada tem graça", "fala em vazio", "diz que acha que está com depressão",]
+
+entrelinhas = [
+  "parou de jogar, tocar, desenhar, sair",
+  "responde 'tanto faz' para tudo",
+  "fala da vida como se estivesse vendo de fora, no automático",
+  "diz que está cansado mesmo dormindo muito",
+  "não lembra a última vez que se divertiu",
+  "se esforça para parecer bem perto dos outros",
+]
+
+falas_diretas = ["acho que tô com depressão", "nada mais tem graça pra mim", "me sinto vazio",]
+
+falas_sutis = [
+  "meu violão tá encostado faz meses",
+  "os meninos me chamaram pra sair, mas sei lá, tanto faz",
+  "durmo 12 horas e acordo cansado",
+  "tô vivendo no automático, acordo, faço as coisas e pronto",
+  "nem lembro a última vez que eu ri de verdade",
+  "em casa todo mundo acha que eu tô bem, eu finjo bem",
+]
+
+nao_confundir = ["que tédio essa aula", "hoje tô meio desanimado porque meu time perdeu",]
+
+como_responder = """
+1. Acolher e nomear com cuidado: perder o prazer pelas coisas é sério e merece atenção.
+2. Perguntar há quanto tempo está assim e como estão sono, apetite e energia.
+3. Sugerir passos muito pequenos (um banho, uma caminhada de 5 minutos), sem cobrança.
+4. Incentivar fortemente a procurar psicólogo; se o sofrimento for intenso ou longo, também psiquiatra.
+5. Perguntar com delicadeza se, nesse vazio, já pensou em não querer viver (pergunta direta não induz;
+   ela protege). Se sim, seguir o protocolo de ideação.
+"""
+
+evitar = ["'pensa positivo'", "'tem gente em situação pior'", "'você tem tudo para ser feliz'",]
+
+resposta_modelo = """
+Obrigado por me contar isso. Quando as coisas que a gente gostava perdem a graça por semanas, é um sinal
+importante, não preguiça nem frescura. Há quanto tempo você está se sentindo assim? Isso tem tratamento,
+e conversar com um psicólogo é um ótimo primeiro passo. Posso te perguntar uma coisa com cuidado: nesse
+vazio, já passou pela sua cabeça não querer mais viver?
+"""
+
+[[contexto]]
+id = "tristeza-desesperanca"
+titulo = "Desesperança sobre o futuro"
+nivel_risco = "atencao"
+encaminhamento = "psicologo"
+aprovado = false
+revisado_por = ""
+
+situacao = """
+A pessoa não consegue imaginar o futuro melhor: acha que nada vai mudar e que não adianta tentar.
+Desesperança é um dos sinais que mais se ligam a risco de suicídio, mesmo quando a pessoa não fala em morrer.
+"""
+
+palavras_chave = ["nao adianta", "nunca vai mudar", "sem futuro", "nao tem jeito", "pra que", "desisti",
+  "desistir", "cansei de tentar", "sem saida", "nao vejo saida", "nada vai melhorar", "perdida", "perdido",]
+
+sinais_diretos = ["diz que não vê futuro", "diz que nada vai melhorar",]
+
+entrelinhas = [
+  "fala do futuro com ironia ou indiferença",
+  "parou de fazer planos, mesmo pequenos",
+  "considera esforços inúteis ('pra que estudar?')",
+  "frases de cansaço da vida, sem falar em morte",
+]
+
+falas_diretas = ["não vejo futuro nenhum pra mim", "nada vai mudar, não adianta",]
+
+falas_sutis = [
+  "pra que eu vou me matricular se eu sempre desisto",
+  "daqui 5 anos? nem penso nisso, sei lá se...",
+  "já tentei de tudo, cansei de tentar",
+  "todo mundo seguindo a vida e eu parado no mesmo lugar",
+  "as coisas boas são pros outros, não pra mim",
+]
+
+nao_confundir = ["não tenho ideia de qual faculdade fazer", "essa matéria não tem futuro nenhum kkk",]
+
+como_responder = """
+1. Levar a sério e acolher sem tentar convencer de que tudo vai ficar bem.
+2. Lembrar que a desesperança é um SINTOMA (a depressão distorce a visão do futuro), não a verdade.
+3. Perguntar diretamente, com cuidado, sobre pensamentos de morte.
+4. Encaminhar a psicólogo e oferecer o CVV 188 como apoio a qualquer hora.
+"""
+
+evitar = ["discutir com a pessoa provando que ela está errada", "'você é jovem, tem a vida pela frente'",]
+
+resposta_modelo = """
+Sinto o quanto você está cansado de tentar. Quando a gente está muito mal, a mente pinta o futuro todo
+de cinza, mas isso é o sofrimento falando, não uma previsão. Posso te perguntar: você tem pensado em
+morrer ou em não estar mais aqui? Você não precisa passar por isso sozinho: um psicólogo pode ajudar,
+e o CVV atende 24h pelo 188.
+"""
+
+[[contexto]]
+id = "tristeza-choro-frequente"
+titulo = "Choro frequente e tristeza que não passa"
+nivel_risco = "nenhum"
+encaminhamento = "psicologo"
+aprovado = false
+revisado_por = ""
+
+situacao = """
+A pessoa chora com frequência, às vezes sem saber o motivo, e sente uma tristeza que se arrasta.
+Pode ter um gatilho (mudança, perda, conflito) ou não.
+"""
+
+palavras_chave = ["chorando", "chorei", "choro", "chorar", "triste", "tristeza", "lagrimas", "aperto no peito",
+  "sem motivo", "do nada", "angustia", "angustiado", "angustiada",]
+
+sinais_diretos = ["conta que chora todo dia", "diz que está triste e não sabe por quê",]
+
+entrelinhas = [
+  "chora escondido no banheiro, no ônibus, no travesseiro",
+  "pede desculpas por estar 'sendo dramático'",
+  "diz que qualquer coisa a faz chorar",
+]
+
+falas_diretas = ["eu choro todo dia e não sei por quê", "tô muito triste ultimamente",]
+
+falas_sutis = [
+  "chorei de novo no ônibus voltando do trabalho",
+  "desculpa o drama, é que tá difícil",
+  "qualquer coisinha me faz chorar agora",
+  "durmo com o rosto molhado quase toda noite",
+]
+
+nao_confundir = ["chorei vendo o final do filme kkkk", "chorei de rir com esse vídeo",]
+
+como_responder = """
+1. Acolher: chorar não é fraqueza nem drama.
+2. Perguntar desde quando e se aconteceu algo antes.
+3. Se dura mais de duas semanas ou atrapalha a rotina, sugerir psicólogo.
+4. Ficar atento a sinais de desesperança ou de pensamentos de morte.
+"""
+
+evitar = ["'não chora'", "'engole o choro'",]
+
+resposta_modelo = """
+Não precisa pedir desculpas, aqui você pode chorar e falar à vontade. Chorar tanto assim mostra que
+tem muita coisa pesando aí dentro. Desde quando você tem se sentido assim? Se isso já dura algumas
+semanas, vale muito conversar com um psicólogo, e eu continuo aqui para te ouvir.
+"""

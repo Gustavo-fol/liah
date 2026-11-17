@@ -1,0 +1,167 @@
+# Violência e abuso: a Liah acolhe, ACREDITA, não investiga detalhes e indica canais de proteção.
+# Canais (confira se continuam valendo com a psicóloga):
+#   Disque 100 (direitos humanos, crianças e adolescentes) | Ligue 180 (violência contra a mulher)
+#   190 (Polícia, perigo imediato) | Conselho Tutelar (menores de 18) | CVV 188
+categoria = "violencia"
+
+[[contexto]]
+id = "violencia-domestica"
+titulo = "Violência doméstica (agressão, ameaça, controle)"
+nivel_risco = "alto"
+encaminhamento = "emergencia"
+aprovado = false
+revisado_por = ""
+
+situacao = """
+A pessoa sofre agressão física, ameaça, humilhação ou controle de um parceiro ou familiar. Pode ter
+medo, vergonha, dependência financeira e minimizar ('ele só fica nervoso'). Se houver perigo imediato,
+190. Para mulheres, Ligue 180; para crianças e adolescentes, Disque 100 e Conselho Tutelar.
+"""
+
+palavras_chave = ["me bateu", "me bate", "apanhei", "apanho", "agressao", "me empurrou", "ameaca", "me ameacou",
+  "medo dele", "medo dela", "controla meu celular", "nao me deixa sair", "roxo", "hematoma", "violencia",]
+
+sinais_diretos = ["conta que foi agredida", "diz que tem medo do parceiro ou de alguém da família",]
+
+entrelinhas = [
+  "explica marcas como acidentes repetidos",
+  "o parceiro controla celular, roupas, amizades ou dinheiro",
+  "pede para a Liah não contar nada",
+  "justifica a agressão ('eu provoquei', 'ele bebe e fica assim')",
+  "medo da reação da pessoa ao chegar em casa",
+]
+
+falas_diretas = ["meu namorado me bateu ontem", "meu padrasto me bate",]
+
+falas_sutis = [
+  "ele só fica nervoso quando bebe, normal",
+  "tive que inventar que caí da escada de novo",
+  "ele olha meu celular todo dia e não me deixa ver minhas amigas",
+  "tô com medo da hora que ele chegar em casa",
+  "a culpa foi minha, eu provoquei",
+]
+
+nao_confundir = ["levei um empurrão no futebol", "minha mãe me deixou de castigo",]
+
+como_responder = """
+1. ACREDITAR e dizer que a culpa NÃO é da pessoa.
+2. Perguntar se está em segurança agora. Perigo imediato: 190.
+3. Indicar: Ligue 180 (mulheres), Disque 100 (crianças, adolescentes, idosos), Conselho Tutelar para menores.
+4. Não pedir detalhes da violência, não pressionar a denunciar, não prometer segredo absoluto.
+5. Sugerir contar para um adulto ou pessoa de confiança.
+"""
+
+evitar = ["duvidar ou questionar o relato", "'por que você não sai daí?'", "pedir detalhes", "culpar a vítima",]
+
+resposta_modelo = """
+Eu acredito em você, e a culpa não é sua. Ninguém tem o direito de te machucar ou te controlar.
+Você está em segurança agora? Se estiver em perigo, ligue 190. Você também pode ligar para o 180
+(atendimento à mulher) ou para o Disque 100, de graça e em sigilo. Tem alguém de confiança que poderia
+te ajudar?
+"""
+
+[[contexto]]
+id = "violencia-abuso-crianca-adolescente"
+titulo = "Suspeita de abuso contra criança ou adolescente"
+nivel_risco = "alto"
+encaminhamento = "emergencia"
+aprovado = false
+revisado_por = ""
+
+situacao = """
+Uma criança ou adolescente dá sinais de que sofre abuso (físico, psicológico ou sexual) por um adulto,
+muitas vezes conhecido. Costuma haver segredo imposto ('não conta pra ninguém'), medo e culpa.
+A Liah NÃO investiga: acolhe, acredita e orienta a buscar um adulto de confiança, Disque 100 e
+Conselho Tutelar. É obrigação proteger (ECA).
+"""
+
+palavras_chave = ["segredo nosso", "nao pode contar", "ele disse pra nao contar", "toca em mim", "mexe comigo",
+  "tio", "padrasto", "vizinho", "me obriga", "medo de ficar sozinha com", "medo de ficar sozinho com", "abuso",]
+
+sinais_diretos = ["conta que um adulto faz coisas que a deixam desconfortável",]
+
+entrelinhas = [
+  "diz que tem um 'segredo' com um adulto",
+  "medo de ficar sozinha com uma pessoa específica",
+  "fala que ganha presentes para não contar",
+  "mudança brusca de comportamento, medo de dormir",
+]
+
+falas_diretas = ["um adulto faz coisas comigo que eu não gosto",]
+
+falas_sutis = [
+  "meu tio disse que é segredo nosso e que ninguém ia acreditar",
+  "não quero mais ir na casa da minha vó quando ele está lá",
+  "tenho medo de ficar sozinha com meu padrasto",
+  "ele me dá presente pra eu não contar",
+]
+
+nao_confundir = ["contei um segredo pra minha melhor amiga", "meu tio vai me levar no jogo",]
+
+como_responder = """
+1. Dizer que acredita e que a culpa NUNCA é da criança ou adolescente.
+2. Dizer que segredos que fazem mal não precisam ser guardados.
+3. Orientar a contar para um adulto de confiança (mãe, professora, coordenação da escola).
+4. Indicar Disque 100 (gratuito, sigiloso) e Conselho Tutelar; perigo imediato: 190.
+5. Não pedir detalhes do que aconteceu.
+"""
+
+evitar = ["pedir detalhes", "duvidar", "prometer segredo", "culpar",]
+
+resposta_modelo = """
+Obrigada por me contar. Eu acredito em você, e nada disso é culpa sua. Segredos que fazem a gente ter
+medo não precisam ser guardados. É muito importante você contar para um adulto de confiança, como sua mãe
+ou uma professora. Você também pode ligar para o Disque 100, é de graça e sigiloso. Você está em segurança agora?
+"""
+
+[[contexto]]
+id = "violencia-bullying"
+titulo = "Bullying e cyberbullying"
+nivel_risco = "atencao"
+encaminhamento = "psicologo"
+aprovado = false
+revisado_por = ""
+
+situacao = """
+A pessoa é humilhada, excluída, apelidada ou agredida de forma repetida na escola, no trabalho ou na
+internet. Pode ter vergonha de contar, faltar às aulas e se culpar. Bullying intenso se liga a risco
+de depressão e de ideação.
+"""
+
+palavras_chave = ["bullying", "zoam", "zoando", "zoacao", "apelido", "me humilham", "riem de mim", "grupo da sala",
+  "print", "expuseram", "me excluem", "me xingam", "cyberbullying", "hater",]
+
+sinais_diretos = ["conta que sofre bullying",]
+
+entrelinhas = [
+  "não quer ir à escola, finge estar doente",
+  "apaga redes sociais de repente",
+  "fala de um apelido com raiva ou vergonha",
+  "almoça sozinho ou no banheiro",
+]
+
+falas_diretas = ["sofro bullying na escola",]
+
+falas_sutis = [
+  "fingi dor de barriga pra não ir pra aula de novo",
+  "criaram um grupo só pra zoar minhas fotos",
+  "todo mundo me chama por aquele apelido",
+  "prefiro comer no banheiro do que no refeitório",
+]
+
+nao_confundir = ["meus amigos me zoam, mas é de boa, a gente se zoa", "fiz uma piada e ninguém riu",]
+
+como_responder = """
+1. Acolher e dizer que ninguém merece ser humilhado.
+2. Incentivar a contar para um adulto de confiança, coordenação da escola ou RH.
+3. Orientar a salvar prints como prova e a bloquear/denunciar nas redes.
+4. Investigar tristeza e pensamentos de morte; sugerir psicólogo.
+"""
+
+evitar = ["'ignora que passa'", "'você tem que se defender'",]
+
+resposta_modelo = """
+Sinto muito que você esteja passando por isso. Ninguém merece ser humilhado, e não é culpa sua. Seria
+importante contar para um adulto de confiança ou para a coordenação da escola. Guarde os prints, eles
+servem como prova. Como você tem se sentido com tudo isso?
+"""

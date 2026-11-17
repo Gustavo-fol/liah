@@ -1,0 +1,85 @@
+{% extends "base_interno.html" %}
+{% block titulo %}Dicionário{% endblock %}
+{% block conteudo %}
+<h1>Dicionário da Liah</h1>
+<p class="nota">O núcleo usa <strong>só as regras aprovadas</strong> e os contextos aprovados. Rascunhos (seus ou da IA) esperam a revisão do psicólogo.</p>
+
+<div class="barra-acoes">
+  <a class="botao" href="{% url 'interno:regra_nova' %}">+ Nova regra</a>
+  <a class="botao neutro" href="{% url 'interno:dicionario_exportar' %}">Exportar planilha para o psicólogo</a>
+  <a class="botao neutro" href="{% url 'interno:contexto_novo' %}">+ Contexto do psicólogo</a>
+</div>
+
+<section class="painel-bloco destaque-arquivo">
+  <h2>Dicionário em arquivo (o jeito principal)</h2>
+  <p>Escreva os contextos na pasta <code>LIAH/liah-dicionario/</code>, um arquivo <code>.toml</code> por categoria
+     (veja o <code>_LEIA-ME.md</code> e o <code>_modelo.toml</code> lá dentro). Depois importe:</p>
+  <pre>python manage.py importar_dicionario --verificar   # só confere
+python manage.py importar_dicionario               # grava</pre>
+  {% if user.is_superuser %}
+  <form method="post" action="{% url 'interno:dicionario_importar' %}" class="form-linha">
+    {% csrf_token %}
+    <button type="submit" class="botao">Importar os arquivos agora</button>
+    <label class="check"><input type="checkbox" name="arquivar" value="1"> arquivar os contextos que saíram dos arquivos</label>
+  </form>
+  {% endif %}
+  <p class="nota">Só entram na conversa os contextos com <code>aprovado = true</code> e o nome do psicólogo em <code>revisado_por</code>.
+     Os outros ficam como rascunho, e o laboratório já pode testá-los.</p>
+</section>
+
+<section class="painel-bloco">
+  <h2>Pedir sugestões à IA principal</h2>
+  <form method="post" action="{% url 'interno:regras_sugerir' %}" class="form-linha">
+    {% csrf_token %}
+    {{ form_sugerir.categoria }} {{ form_sugerir.quantidade }}
+    <button type="submit" class="botao neutro">Sugerir regras</button>
+  </form>
+  <p class="nota">Pode levar alguns segundos. As sugestões entram como rascunho. Bom para ter ideias e mostrar ao psicólogo;
+     para treinar de verdade, use o dicionário em arquivo.</p>
+</section>
+
+<form method="get" class="form-linha filtros">
+  <select name="status">
+    <option value="">Todos os status</option>
+    {% for valor, nome in status_opcoes %}<option value="{{ valor }}" {% if valor == status %}selected{% endif %}>{{ nome }}</option>{% endfor %}
+  </select>
+  <select name="categoria">
+    <option value="">Todas as categorias</option>
+    {% for valor, nome in categorias %}<option value="{{ valor }}" {% if valor == categoria %}selected{% endif %}>{{ nome }}</option>{% endfor %}
+  </select>
+  <button type="submit" class="botao neutro">Filtrar</button>
+</form>
+
+<div class="tabela-rolagem">
+<table class="tabela">
+  <thead><tr><th>Regra</th><th>Categoria</th><th>Risco</th><th>Encaminhamento</th><th>Status</th><th>Origem</th></tr></thead>
+  <tbody>
+  {% for r in regras %}
+    <tr>
+      <td><a href="{% url 'interno:regra_editar' r.pk %}">{{ r.titulo }}</a></td>
+      <td>{{ r.get_categoria_display }}</td>
+      <td><span class="selo selo-{{ r.nivel_risco }}">{{ r.get_nivel_risco_display }}</span></td>
+      <td>{{ r.get_encaminhamento_display }}</td>
+      <td><span class="selo selo-{{ r.status }}">{{ r.get_status_display }}</span>{% if r.revisado_por_psicologo %} ✔{% endif %}</td>
+      <td>{% if r.veio_do_arquivo %}<span class="selo selo-arquivo" title="{{ r.arquivo }}">arquivo</span>{% else %}{{ r.get_origem_display }}{% endif %}</td>
+    </tr>
+  {% empty %}
+    <tr><td colspan="6" class="nota">Nenhuma regra ainda. Crie uma ou peça sugestões à IA.</td></tr>
+  {% endfor %}
+  </tbody>
+</table>
+</div>
+
+<section class="painel-bloco">
+  <h2>Contextos do psicólogo</h2>
+  <ul class="dados">
+    {% for c in contextos %}
+      <li><a href="{% url 'interno:contexto_editar' c.pk %}">{{ c.titulo }}</a>
+        {% if c.aprovado %}<span class="selo selo-aprovada">aprovado</span>{% else %}<span class="selo selo-rascunho">não aprovado</span>{% endif %}
+        <small class="nota">{{ c.fonte }}</small></li>
+    {% empty %}
+      <li class="nota">Nenhum contexto ainda.</li>
+    {% endfor %}
+  </ul>
+</section>
+{% endblock %}

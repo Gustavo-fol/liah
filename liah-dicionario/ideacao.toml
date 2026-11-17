@@ -1,0 +1,172 @@
+# ATENÇÃO: categoria de MAIOR cuidado. Nunca escreva métodos, meios ou detalhes.
+# Risco "alto" é respondido pelo protocolo de crise FIXO (risco.py) antes da IA:
+# estes contextos servem para a Liah perceber o que NÃO é dito com todas as letras.
+categoria = "ideacao"
+
+[[contexto]]
+id = "ideacao-passiva"
+titulo = "Ideação passiva (desejo de não existir, sem plano)"
+nivel_risco = "atencao"
+encaminhamento = "emergencia"
+aprovado = false
+revisado_por = ""
+
+situacao = """
+A pessoa não fala em se matar, mas deseja não acordar, sumir, não existir, ou acha que os outros
+ficariam melhor sem ela. É um sinal sério: precisa de acolhimento, pergunta direta sobre risco
+e encaminhamento, mesmo que a pessoa diga que 'nunca faria nada'.
+"""
+
+palavras_chave = ["sumir", "sumisse", "desaparecer", "nao acordar", "melhor se eu", "ficar melhor sem",
+  "ficariam melhor", "seria melhor sem", "dormir pra sempre", "nao existir", "nao queria ter nascido",
+  "melhor sem mim", "ninguem sentiria falta", "ninguem ia sentir falta", "cansado de viver", "cansada de viver",
+  "queria morrer", "seria mais facil", "peso pra todo mundo", "um peso",]
+
+sinais_diretos = ["diz que queria sumir ou não acordar", "diz que os outros estariam melhor sem ela",]
+
+entrelinhas = [
+  "fala de si como um peso ou um problema para a família",
+  "torce para algo acontecer (um acidente, uma doença)",
+  "diz que está 'cansada de tudo', de existir",
+  "minimiza logo depois ('mas relaxa, não vou fazer nada')",
+  "humor mórbido repetido sobre a própria morte",
+]
+
+falas_diretas = ["às vezes eu queria não acordar mais", "todo mundo seria mais feliz sem mim",]
+
+falas_sutis = [
+  "se um carro me pegasse amanhã acho que eu nem ligaria",
+  "cansei de tudo, sabe? de existir mesmo",
+  "minha família já tem problema demais, eu sou só mais um",
+  "queria dormir e só acordar daqui uns anos, ou não acordar",
+  "relaxa, eu não vou fazer nada, só tô cansado",
+  "ninguém ia notar se eu sumisse",
+]
+
+nao_confundir = [
+  "morri de vergonha na apresentação",
+  "se eu reprovar minha mãe me mata kkk",
+  "quero sumir dessa reunião chata",
+  "morrendo de sono hoje",
+]
+
+como_responder = """
+1. Agradecer a confiança e acolher sem julgamento e sem pânico.
+2. Perguntar DIRETAMENTE: 'você tem pensado em tirar a própria vida?'. Perguntar não incentiva; protege.
+3. Perguntar se a pessoa está segura agora e se tem alguém por perto.
+4. Indicar o CVV (ligar 188, 24h, gratuito, ou chat em cvv.org.br) e, em perigo imediato, o SAMU 192.
+5. Incentivar a contar para alguém de confiança e buscar psicólogo ou psiquiatra.
+6. Manter a conversa aberta: 'estou aqui com você'.
+"""
+
+evitar = ["mudar de assunto", "'não fala besteira'", "'pensa na sua família'", "prometer segredo",]
+
+resposta_modelo = """
+Obrigado por confiar isso a mim, sei que não é fácil dizer. Você não é um peso, e esse cansaço de tudo
+merece cuidado de verdade. Posso te perguntar direto: você tem pensado em tirar a sua vida? Você está em
+segurança agora? O CVV atende 24h pelo 188, de graça, e é ótimo para conversar sobre isso. Eu continuo aqui.
+"""
+
+[[contexto]]
+id = "ideacao-ativa-decisao"
+titulo = "Ideação ativa com decisão ou data"
+nivel_risco = "alto"
+encaminhamento = "emergencia"
+aprovado = false
+revisado_por = ""
+
+situacao = """
+A pessoa indica que decidiu morrer, que tem uma data ou que 'hoje é o dia'. Pode parecer calma, o que
+às vezes acontece depois da decisão. É EMERGÊNCIA: o objetivo é manter a pessoa conversando, conectar
+com ajuda imediata (CVV 188, SAMU 192) e com alguém presente.
+"""
+
+palavras_chave = ["ultima vez", "ultimo dia", "hoje e o dia", "ja decidi", "ja planejei", "vou acabar com tudo",
+  "acabar com isso", "nao vou estar aqui", "se matar", "suicidio", "suicidar", "me matar", "tirar minha vida",]
+
+sinais_diretos = ["diz que vai se matar", "diz que já decidiu ou tem data",]
+
+entrelinhas = [
+  "calma repentina depois de muito sofrimento",
+  "agradece por tudo como se fosse a última conversa",
+  "pede para cuidarem de alguém ou de um animal 'depois'",
+  "diz que já resolveu tudo e que agora vai ficar em paz",
+]
+
+falas_diretas = ["eu decidi, vou me matar hoje", "essa é a última vez que eu falo com alguém",]
+
+falas_sutis = [
+  "obrigado por tudo, Liah, foi bom conversar com você",
+  "já resolvi tudo, agora finalmente vou ter paz",
+  "se alguém perguntar, diz que eu tentei",
+  "amanhã eu não vou mais precisar me preocupar com isso",
+]
+
+nao_confundir = ["hoje é o último dia de aula!!", "última vez que eu como nesse restaurante, horrível",]
+
+como_responder = """
+1. EMERGÊNCIA. Responder imediatamente, com calor humano e frases curtas.
+2. Dizer que se importa e pedir que a pessoa NÃO fique sozinha agora.
+3. Ligar 188 (CVV) agora; se houver perigo imediato, 192 (SAMU) ou ir a um pronto-socorro.
+4. Pedir que se afaste de qualquer coisa que possa usar para se machucar e chame alguém para ficar junto.
+5. Continuar a conversa: perguntar onde está e quem pode estar com ela agora.
+"""
+
+evitar = ["discutir as razões", "qualquer detalhe sobre meios", "encerrar a conversa", "ameaçar ou culpar",]
+
+resposta_modelo = """
+Eu me importo com você e quero que você fique em segurança agora. Por favor, ligue agora para o CVV no 188,
+ou para o SAMU no 192 se estiver em perigo imediato. Você consegue chamar alguém para ficar com você neste
+momento? Onde você está agora? Eu continuo aqui conversando com você.
+"""
+
+[[contexto]]
+id = "ideacao-despedida"
+titulo = "Sinais de despedida (doar coisas, mensagens de adeus)"
+nivel_risco = "alto"
+encaminhamento = "emergencia"
+aprovado = false
+revisado_por = ""
+
+situacao = """
+A pessoa não fala em morte, mas está se despedindo: doando objetos queridos, pedindo desculpas a todos,
+escrevendo cartas, organizando coisas 'para quando não estiver'. São sinais de alerta clássicos.
+"""
+
+palavras_chave = ["me despedir", "despedida", "adeus", "doei minhas coisas", "dei minhas coisas", "carta pra",
+  "cartas", "pedir desculpas pra todo mundo", "quando eu nao estiver", "cuida dele por mim", "cuida dela por mim",]
+
+sinais_diretos = ["conta que está se despedindo das pessoas",]
+
+entrelinhas = [
+  "doou ou distribuiu coisas de valor afetivo",
+  "pediu desculpas a várias pessoas de uma vez",
+  "deixou senhas, recados, instruções",
+  "faz perguntas sobre como a família ficaria",
+]
+
+falas_diretas = ["tô me despedindo de todo mundo",]
+
+falas_sutis = [
+  "dei meu videogame pro meu primo, ele vai cuidar melhor",
+  "mandei mensagem pedindo desculpas pra todo mundo hoje",
+  "deixei uma carta pra minha mãe na gaveta",
+  "se acontecer alguma coisa comigo, cuida do meu gato?",
+]
+
+nao_confundir = ["vou me mudar e tô doando os móveis", "fiz uma carta de despedida pro meu colega que vai mudar de escola",]
+
+como_responder = """
+1. Tratar como EMERGÊNCIA. Perguntar diretamente se a pessoa está pensando em se matar.
+2. Indicar CVV 188 agora e SAMU 192 em perigo imediato.
+3. Pedir que a pessoa avise alguém de confiança agora e não fique sozinha.
+4. Manter a conversa e o acolhimento.
+"""
+
+evitar = ["ignorar os sinais por a pessoa não ter falado em morte", "prometer segredo",]
+
+resposta_modelo = """
+Fiquei preocupada com você. Quando alguém começa a doar as coisas e se despedir, às vezes está pensando
+em tirar a própria vida. É isso que está passando pela sua cabeça? Você não precisa enfrentar isso sozinho:
+ligue agora para o CVV no 188 e, se estiver em perigo, para o 192. Tem alguém que pode ficar com você agora?
+"""

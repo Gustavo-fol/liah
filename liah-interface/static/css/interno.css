@@ -1,0 +1,124 @@
+/* ============================================================
+   ÁREA INTERNA (sempre escura, visual "de sistema", sério e limpo)
+   Usa as variáveis do tema escuro do base.css.
+   ============================================================ */
+.corpo-interno { background: #070d1a; background-image: none; }
+.interno-topo {
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.75rem;
+  padding: 0.8rem 1.25rem; background: #0b1528; border-bottom: 1px solid var(--borda);
+  position: sticky; top: 0; z-index: 5;
+}
+.interno-marca { color: var(--texto); text-decoration: none; font-weight: 700; display: flex; align-items: center; gap: 0.5rem; }
+.interno-marca .ponto { width: 10px; height: 10px; border-radius: 50%; background: var(--ciano); box-shadow: 0 0 10px var(--ciano); }
+.interno-nav { display: flex; flex-wrap: wrap; gap: 0.25rem; }
+.interno-nav a { color: var(--suave); text-decoration: none; padding: 0.4rem 0.7rem; border-radius: 8px; }
+.interno-nav a:hover { color: var(--texto); background: var(--suave-fundo); }
+.interno-conteudo { max-width: 1150px; margin: 0 auto; padding: 1.25rem 1rem 3rem; }
+.interno-conteudo h1 { margin-top: 0.25rem; }
+
+.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 0.75rem; margin: 1rem 0; }
+.card-num { background: var(--cartao-solido); border: 1px solid var(--borda); border-radius: var(--raio); padding: 1rem; color: var(--suave); font-size: 0.9rem; }
+.card-num span { display: block; font-size: 2rem; font-weight: 700; color: var(--texto); }
+.card-num.alerta-num span { color: #ffb37a; }
+
+.painel-bloco { background: var(--cartao-solido); border: 1px solid var(--borda); border-radius: var(--raio); padding: 1rem 1.25rem; margin: 1rem 0; }
+.painel-bloco h2 { margin-top: 0; font-size: 1.1rem; }
+.barra-acoes { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 1rem 0; }
+.form-linha { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; }
+.form-linha select, .form-linha input {
+  background: var(--campo); color: var(--texto); border: 1px solid var(--borda); border-radius: 8px; padding: 0.55rem 0.7rem; font: inherit;
+}
+.filtros { margin: 1rem 0; }
+.formulario select, .formulario textarea {
+  width: 100%; padding: 0.65rem 0.75rem; font: inherit; color: var(--texto);
+  background: var(--campo); border: 1px solid var(--borda); border-radius: 8px;
+}
+.formulario fieldset { background: var(--cartao-solido); }
+
+.tabela-rolagem { overflow-x: auto; }
+.tabela { width: 100%; border-collapse: collapse; background: var(--cartao-solido); border-radius: var(--raio); overflow: hidden; }
+.tabela th, .tabela td { padding: 0.65rem 0.8rem; text-align: left; border-bottom: 1px solid var(--borda); font-size: 0.92rem; }
+.tabela th { color: var(--suave); font-weight: 600; background: #0e1b33; }
+.tabela tr:hover td { background: #0f1f3a; }
+
+.selo { display: inline-block; padding: 0.15rem 0.55rem; border-radius: 999px; font-size: 0.78rem; font-weight: 600; background: var(--suave-fundo); color: var(--suave); }
+.selo-aprovada, .selo-nenhum { background: #123323; color: #6fd49a; }
+.selo-rascunho, .selo-atencao { background: #3a2c10; color: #ffcf6e; }
+.selo-alto, .selo-arquivada { background: #3a1a1f; color: #ff8a7a; }
+
+.lista-modelos { columns: 3 200px; padding-left: 1.1rem; font-size: 0.88rem; }
+.lista-modelos code { color: var(--ciano); }
+
+.exemplo { background: var(--cartao-solido); border: 1px solid var(--borda); border-left: 4px solid var(--borda); border-radius: var(--raio); padding: 0.9rem 1.1rem; margin-bottom: 0.75rem; }
+.exemplo.certo { border-left-color: #6fd49a; }
+.exemplo.errado { border-left-color: #ff8a7a; }
+.exemplo header { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; }
+.exemplo blockquote { margin: 0.6rem 0; padding: 0.6rem 0.9rem; background: var(--campo); border-radius: 8px; font-style: italic; }
+.voltar { color: var(--suave); text-decoration: none; display: inline-block; margin-bottom: 0.5rem; }
+
+/* ============================================================ RELATÓRIOS */
+.cabecalho-relatorio { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.75rem; }
+.periodos { display: flex; gap: 0.25rem; background: var(--cartao-solido); border: 1px solid var(--borda); border-radius: 999px; padding: 0.25rem; }
+.periodos a { color: var(--suave); text-decoration: none; padding: 0.35rem 0.9rem; border-radius: 999px; font-size: 0.9rem; }
+.periodos a.ativo { background: var(--azul); color: #fff; }
+
+.graficos { display: grid; gap: 0 1rem; }
+@media (min-width: 900px) { .graficos { grid-template-columns: 1fr 1fr; } }
+
+/* Gráfico de barras só com CSS: cada barra recebe a altura em --h (calculada no Python) */
+.grafico { display: flex; align-items: flex-end; gap: 2px; height: 140px; padding-top: 0.5rem; border-bottom: 1px solid var(--borda); }
+.barra { flex: 1; min-width: 2px; height: max(var(--h), 2px); border-radius: 3px 3px 0 0; background: var(--cor-barra, var(--azul)); opacity: 0.9; transition: opacity 0.2s; }
+.barra:hover { opacity: 1; filter: brightness(1.25); }
+.cor-azul { --cor-barra: #4d8fe8; }
+.cor-ciano { --cor-barra: #5cc3ff; }
+.cor-verde { --cor-barra: #6fd49a; }
+.cor-laranja { --cor-barra: #ffb37a; }
+.cor-vermelho { --cor-barra: #ff8a7a; }
+.grafico-eixo { display: flex; justify-content: space-between; font-size: 0.78rem; color: var(--suave); margin-top: 0.3rem; }
+
+/* Barras horizontais (perfil, origem das respostas) */
+.linha-barra { display: grid; grid-template-columns: 9rem 1fr 3rem; align-items: center; gap: 0.6rem; margin: 0.35rem 0; font-size: 0.9rem; }
+.linha-barra b { text-align: right; }
+.trilho { height: 10px; background: var(--campo); border-radius: 999px; overflow: hidden; }
+.trilho div { height: 100%; background: linear-gradient(90deg, var(--azul), var(--ciano)); border-radius: 999px; }
+.sub-h { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--suave); margin: 1rem 0 0.4rem; }
+
+/* Saúde do sistema: bolinha colorida em cada item */
+.saude { list-style: none; padding: 0; margin: 0; }
+.saude li { padding: 0.45rem 0 0.45rem 1.4rem; position: relative; border-bottom: 1px solid var(--borda); font-size: 0.93rem; }
+.saude li::before { content: ""; position: absolute; left: 0.2rem; top: 0.85rem; width: 9px; height: 9px; border-radius: 50%; background: var(--suave); }
+.saude li.bom::before { background: #6fd49a; }
+.saude li.atencao::before { background: #ffcf6e; }
+.saude li.ruim::before { background: #ff8a7a; }
+.saude code { color: var(--ciano); }
+
+/* ============================================================ PAINEL: usuários e planos */
+.busca-email { display: flex; flex-wrap: wrap; gap: 0.4rem; align-items: center; }
+.busca-email input { min-width: 240px; padding: 0.5rem 0.75rem; border-radius: 8px; border: 1px solid var(--borda); background: var(--campo); color: var(--texto); font: inherit; }
+.form-plano { display: flex; gap: 0.35rem; align-items: center; margin: 0; }
+.form-plano select { padding: 0.4rem 0.5rem; border-radius: 8px; border: 1px solid var(--borda); background: var(--campo); color: var(--texto); font: inherit; }
+.form-plano .botao, .busca-email .botao { padding: 0.45rem 0.8rem; font-size: 0.88rem; }
+.selo-equipe { background: #3a2c10; color: #ffcf6e; }
+/* texto só para leitores de tela (acessibilidade), invisível na tela */
+.so-leitor { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+
+/* ============================================================ ESCURO POR COMPLETO
+   Qualquer campo da área interna (texto longo, número, listas, caixas) fica escuro,
+   mesmo os que vêm do _campo.html sem classe própria. */
+.corpo-interno { color-scheme: dark; }
+.corpo-interno input:not([type="checkbox"]):not([type="radio"]):not([type="submit"]),
+.corpo-interno select,
+.corpo-interno textarea {
+  background: var(--campo); color: var(--texto); border: 1px solid var(--borda);
+  border-radius: 8px; padding: 0.6rem 0.75rem; font: inherit; max-width: 100%;
+}
+.corpo-interno .campo input:not([type="checkbox"]):not([type="radio"]), .corpo-interno .campo select, .corpo-interno .campo textarea { width: 100%; }
+.corpo-interno textarea { min-height: 6rem; resize: vertical; }
+.corpo-interno input:focus, .corpo-interno select:focus, .corpo-interno textarea:focus { outline: 2px solid var(--azul); border-color: var(--azul); }
+.corpo-interno fieldset, .corpo-interno .bloco, .corpo-interno .caixa-central { background: var(--cartao-solido); border-color: var(--borda); }
+.corpo-interno code, .corpo-interno pre { background: #0b1528; color: var(--ciano); border-radius: 6px; padding: 0.1rem 0.35rem; }
+.corpo-interno pre { padding: 0.8rem 1rem; overflow-x: auto; }
+.corpo-interno .alerta { background: #0f1f3a; }
+.corpo-interno ::placeholder { color: #6f84a6; }
+.selo-arquivo { background: #10294a; color: #7cc4ff; }
+.destaque-arquivo { border-color: #2a5a96; }

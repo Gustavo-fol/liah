@@ -1,0 +1,8 @@
+Olá.
+
+Você autorizou anteriormente o cadastro de {{ nome }} na Liah.
+Este é um aviso de que {{ nome }} excluiu a própria conta, e todos os dados foram apagados.
+
+Nenhuma ação é necessária da sua parte.
+
+Liah

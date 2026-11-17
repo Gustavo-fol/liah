@@ -1,0 +1,102 @@
+categoria = "sono"
+
+[[contexto]]
+id = "sono-insonia-pensamentos"
+titulo = "Insônia com pensamentos acelerados"
+nivel_risco = "nenhum"
+encaminhamento = "nenhum"
+aprovado = false
+revisado_por = ""
+
+situacao = """
+A pessoa não consegue dormir porque a cabeça não desliga, ou acorda de madrugada e não volta a dormir.
+Mensagens de madrugada são um sinal em si. Insônia frequente piora humor e ansiedade.
+"""
+
+palavras_chave = ["insonia", "nao consigo dormir", "sem sono", "madrugada", "3 da manha", "acordado", "acordada",
+  "virando na cama", "rolando na cama", "nao durmo", "dormir", "sono",]
+
+sinais_diretos = ["diz que não consegue dormir",]
+
+entrelinhas = [
+  "manda mensagens de madrugada",
+  "fica no celular até tarde para não pensar",
+  "acorda cansado todo dia",
+  "toma café ou energético para aguentar",
+]
+
+falas_diretas = ["não consigo dormir de jeito nenhum", "tô com insônia faz uma semana",]
+
+falas_sutis = [
+  "são 3 da manhã e eu aqui de novo",
+  "fico rolando na cama pensando em tudo que deu errado",
+  "só durmo quando o celular cai na minha cara",
+  "já tomei dois energéticos hoje pra conseguir funcionar",
+]
+
+nao_confundir = ["fiquei até tarde jogando com os amigos", "quantas horas um adolescente deve dormir?",]
+
+como_responder = """
+1. Acolher, especialmente se for de madrugada.
+2. Sugestões simples: tirar o celular da cama, respirar devagar, anotar os pensamentos para o dia seguinte,
+   evitar cafeína à tarde.
+3. Se a insônia durar semanas ou vier com tristeza ou ansiedade fortes, sugerir avaliação médica e psicólogo.
+4. Não indicar remédios.
+"""
+
+evitar = ["indicar remédio para dormir", "'é só fechar os olhos'",]
+
+resposta_modelo = """
+Madrugada acordado com a cabeça a mil é muito cansativo. Uma coisa que ajuda: anotar o que está rodando
+na cabeça num papel, como se fosse guardar para amanhã, e respirar bem devagar algumas vezes. Larga um
+pouquinho o celular também. Se isso tem acontecido quase todas as noites, vale conversar com um médico
+ou um psicólogo. O que está te tirando o sono hoje?
+"""
+
+[[contexto]]
+id = "sono-cansaco-cronico"
+titulo = "Cansaço constante e sono demais"
+nivel_risco = "nenhum"
+encaminhamento = "psicologo"
+aprovado = false
+revisado_por = ""
+
+situacao = """
+A pessoa dorme muito e continua cansada, tem dificuldade de levantar, passa o dia sem energia.
+Pode ser sinal de depressão ou de problema físico (anemia, tireoide): vale avaliação médica.
+"""
+
+palavras_chave = ["cansada", "cansado", "cansaco", "sem energia", "dormindo muito", "durmo demais", "nao consigo levantar",
+  "exaustao", "moleza", "preguica", "sem forca",]
+
+sinais_diretos = ["diz que vive cansado mesmo dormindo bem",]
+
+entrelinhas = [
+  "dorme a tarde toda",
+  "falta compromissos por não conseguir levantar",
+  "se chama de preguiçosa",
+]
+
+falas_diretas = ["vivo cansado, durmo e não descanso",]
+
+falas_sutis = [
+  "acordei 2 da tarde de novo",
+  "perdi a aula porque simplesmente não consegui sair da cama",
+  "minha mãe diz que é preguiça, mas não é",
+]
+
+nao_confundir = ["tô cansado porque treinei pesado hoje", "virei a noite estudando",]
+
+como_responder = """
+1. Acolher e dizer que cansaço constante não é preguiça.
+2. Sugerir avaliação médica para descartar causas físicas.
+3. Investigar humor (vazio, tristeza) e sugerir psicólogo se houver sinais de depressão.
+"""
+
+evitar = ["'é preguiça'",]
+
+resposta_modelo = """
+Cansaço que não passa nem dormindo não é preguiça: é um sinal do corpo que merece atenção. Seria bom
+fazer uma consulta médica para ver se está tudo bem, por exemplo com exames de sangue. E como anda o
+seu humor nesses dias? Às vezes esse cansaço vem junto com tristeza, e um psicólogo também pode ajudar.
+"""

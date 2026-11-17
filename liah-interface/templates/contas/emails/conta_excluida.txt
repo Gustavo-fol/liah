@@ -1,0 +1,8 @@
+Olá, {{ nome }}.
+
+Confirmamos que a sua conta na Liah foi excluída, junto com todos os seus dados
+(cadastro, histórico de conversas e autorizações).
+
+Se não foi você que fez isso, responda este e-mail imediatamente.
+
+Liah

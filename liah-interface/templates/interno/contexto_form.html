@@ -1,0 +1,23 @@
+{% extends "base_interno.html" %}
+{% block titulo %}Contexto{% endblock %}
+{% block conteudo %}
+<a class="voltar" href="{% url 'interno:dicionario' %}">&larr; Voltar ao dicionário</a>
+<h1>{% if contexto %}Editar contexto{% else %}Novo contexto do psicólogo{% endif %}</h1>
+<p class="nota">Textos de orientação que a IA principal usa como base para interpretar as conversas. Só os aprovados são usados.</p>
+<form method="post" class="formulario" novalidate>
+  {% csrf_token %}
+  {% include "contas/_erros_gerais.html" %}
+  <fieldset>
+    <div class="linha">
+      {% include "contas/_campo.html" with campo=form.titulo %}
+      {% include "contas/_campo.html" with campo=form.fonte %}
+    </div>
+    {% include "contas/_campo.html" with campo=form.conteudo %}
+    {% include "contas/_campo.html" with campo=form.aprovado %}
+  </fieldset>
+  <div class="botoes">
+    <button type="submit" name="acao" value="salvar" class="botao">Salvar</button>
+    {% if contexto %}<button type="submit" name="acao" value="apagar" class="botao perigo" data-confirmar="Apagar este contexto?">Apagar</button>{% endif %}
+  </div>
+</form>
+{% endblock %}

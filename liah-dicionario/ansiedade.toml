@@ -1,0 +1,171 @@
+categoria = "ansiedade"
+
+[[contexto]]
+id = "ansiedade-crise-agora"
+titulo = "Crise de ansiedade acontecendo agora"
+nivel_risco = "atencao"
+encaminhamento = "nenhum"
+aprovado = false
+revisado_por = ""
+
+situacao = """
+A pessoa está no meio de uma crise: coração acelerado, falta de ar, tremor, sensação de que vai
+morrer ou enlouquecer. Escreve rápido, com erros, frases curtas. Precisa de ajuda para se acalmar
+AGORA, não de explicação longa. Sintomas físicos fortes também podem ser problema médico.
+"""
+
+palavras_chave = ["crise", "ataque de panico", "panico", "falta de ar", "nao consigo respirar", "coracao acelerado",
+  "coracao disparado", "tremendo", "tremedeira", "sufocando", "vou desmaiar", "vou morrer", "socorro", "taquicardia",]
+
+sinais_diretos = ["diz que está tendo uma crise", "descreve falta de ar e coração acelerado",]
+
+entrelinhas = [
+  "mensagens muito curtas, com erros de digitação e sem pontuação",
+  "repete a mesma ideia ('me ajuda me ajuda')",
+  "medo de estar enfartando ou enlouquecendo",
+  "está trancada no banheiro, no carro, fugiu da sala",
+]
+
+falas_diretas = ["to tendo uma crise de ansiedade agora", "acho que é ataque de pânico, não consigo respirar",]
+
+falas_sutis = [
+  "me ajuda rapido por favor",
+  "meu coraçao ta muito rapido nao para",
+  "saí da sala correndo, tô no banheiro, tudo tremendo",
+  "parece que vou desmaiar a qualquer momento",
+  "não sei o que tá acontecendo comigo, tá tudo estranho",
+]
+
+nao_confundir = [
+  "fico ansioso esperando o resultado do vestibular",
+  "tô ansiosa pra viagem de sexta!!",
+  "corri 5 km e meu coração tá acelerado",
+]
+
+como_responder = """
+1. Frases MUITO curtas e calmas. Uma instrução por vez.
+2. Respiração guiada: inspirar contando 4, segurar 4, soltar devagar contando 6. Repetir.
+3. Aterramento 5-4-3-2-1: cinco coisas que vê, quatro que toca, três que ouve...
+4. Lembrar que a crise passa (costuma diminuir em minutos).
+5. Se houver dor no peito, desmaio, ou se for a primeira vez com sintomas fortes: procurar atendimento
+   médico ou ligar 192 (SAMU).
+6. Depois que acalmar, sugerir buscar um psicólogo se as crises se repetem.
+"""
+
+evitar = ["textos longos", "'calma, não é nada'", "explicar teoria da ansiedade no meio da crise",]
+
+resposta_modelo = """
+Estou aqui com você. Vamos respirar juntos: puxa o ar contando até 4... segura 4... e solta bem devagar
+contando até 6. De novo. Isso vai passar. Agora me diz 3 coisas que você está vendo aí.
+Se sentir dor no peito ou achar que vai desmaiar, ligue 192.
+"""
+
+[[contexto]]
+id = "ansiedade-antecipatoria-prova"
+titulo = "Ansiedade antes de prova, apresentação ou entrevista"
+nivel_risco = "nenhum"
+encaminhamento = "nenhum"
+aprovado = false
+revisado_por = ""
+
+situacao = """
+Medo intenso de um evento futuro de avaliação: prova, vestibular, ENEM, seminário, entrevista de emprego.
+Pode vir com insônia, dor de barriga, branco na hora, procrastinação por medo de falhar.
+"""
+
+palavras_chave = ["prova", "provas", "vestibular", "enem", "apresentacao", "seminario", "entrevista", "tcc",
+  "branco", "nervoso", "nervosa", "frio na barriga", "medo de errar", "reprovar", "recuperacao",]
+
+sinais_diretos = ["diz que está muito nervoso com a prova", "medo de dar branco",]
+
+entrelinhas = [
+  "não consegue começar a estudar e se culpa",
+  "conta que não dorme pensando no dia",
+  "imagina só o pior resultado",
+  "fala de dor de barriga ou enjoo na véspera",
+  "compara o próprio desempenho com os colegas",
+]
+
+falas_diretas = ["tenho prova amanhã e tô em pânico", "morro de medo de apresentar trabalho",]
+
+falas_sutis = [
+  "abri o caderno umas dez vezes hoje e fechei de novo",
+  "se eu não passar dessa vez meus pais vão me matar",
+  "todo mundo da sala já terminou a matéria, só eu que não",
+  "toda vez que penso na entrevista meu estômago revira",
+  "é a terceira noite que eu não durmo direito",
+]
+
+nao_confundir = ["como eu faço um resumo de biologia?", "a prova foi fácil demais hoje",]
+
+como_responder = """
+1. Validar que nervosismo antes de avaliação é comum e até ajuda um pouco.
+2. Quebrar a tarefa em pedaços pequenos (estudar 25 minutos, pausa de 5).
+3. Trocar o 'e se eu falhar?' por 'o que eu consigo fazer hoje?'.
+4. Lembrar de sono, água e comida: o cérebro precisa disso para render.
+5. Se a ansiedade atrapalha sempre a vida escolar ou o trabalho, sugerir psicólogo.
+"""
+
+evitar = ["'é só estudar que passa'", "aumentar a pressão sobre o resultado",]
+
+resposta_modelo = """
+Faz sentido você estar nervoso, isso é importante para você. Que tal a gente diminuir o tamanho do
+problema: qual é UMA parte da matéria que dá para revisar hoje, em 25 minutos? Depois disso, uma pausa.
+E tenta dormir bem hoje: descansado, o cérebro lembra muito mais do que você imagina.
+"""
+
+[[contexto]]
+id = "ansiedade-preocupacao-constante"
+titulo = "Preocupação constante (ansiedade generalizada)"
+nivel_risco = "atencao"
+encaminhamento = "psicologo"
+aprovado = false
+revisado_por = ""
+
+situacao = """
+Preocupação difícil de controlar, sobre muitas coisas ao mesmo tempo, quase todos os dias,
+por semanas ou meses: saúde, dinheiro, família, futuro. Vem com tensão muscular, cansaço,
+irritação e dificuldade de dormir. A pessoa às vezes acha que 'é o jeito dela'.
+"""
+
+palavras_chave = ["preocupada", "preocupado", "preocupacao", "nao paro de pensar", "cabeca nao desliga", "e se",
+  "medo de tudo", "tensa", "tenso", "mente acelerada", "pensamento acelerado", "ruminando", "overthinking",]
+
+sinais_diretos = ["diz que se preocupa com tudo", "a cabeça não desliga",]
+
+entrelinhas = [
+  "muitos 'e se...' seguidos",
+  "pede garantias de que vai dar tudo certo",
+  "fala de dor no pescoço, mandíbula travada, cansaço",
+  "evita situações por medo do que pode acontecer",
+  "acha que se parar de se preocupar algo ruim acontece",
+]
+
+falas_diretas = ["eu me preocupo com tudo o tempo todo", "minha cabeça não desliga nunca",]
+
+falas_sutis = [
+  "e se minha mãe ficar doente? e se eu perder o emprego? e se...",
+  "fico checando se tranquei a porta umas cinco vezes",
+  "acordo já cansada, com o maxilar doendo",
+  "sempre fui assim, sempre pensando no pior",
+  "você acha que vai dar tudo certo? me fala que vai",
+]
+
+nao_confundir = ["tô preocupado se vai chover no jogo", "minha mãe se preocupa demais comigo",]
+
+como_responder = """
+1. Acolher e mostrar que viver assim cansa muito.
+2. Separar preocupações que dá para resolver de preocupações sobre o que não se controla.
+3. Sugerir o 'horário da preocupação' (anotar e deixar para um momento do dia).
+4. Explicar com leveza que ansiedade frequente tem tratamento e que um psicólogo ajuda muito.
+5. Se houver sintomas físicos frequentes, sugerir também avaliação médica.
+"""
+
+evitar = ["garantir que 'vai dar tudo certo'", "'para de pensar nisso'",]
+
+resposta_modelo = """
+Parece muito cansativo viver com a cabeça sempre no 'e se...'. Isso tem nome, é comum, e tem tratamento:
+não é só o seu jeito de ser. Uma ideia é separar o que dá para resolver agora do que não está nas suas
+mãos. Um psicólogo pode te ensinar estratégias que funcionam de verdade para isso. Qual preocupação está
+pesando mais hoje?
+"""

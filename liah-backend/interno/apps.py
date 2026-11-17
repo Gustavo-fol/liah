@@ -1,0 +1,7 @@
+from django.apps import AppConfig
+
+
+class InternoConfig(AppConfig):
+    default_auto_field = "django.db.models.BigAutoField"
+    name = "interno"
+    verbose_name = "Área interna da equipe"

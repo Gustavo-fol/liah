@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block conteudo %}
+<div class="caixa-central">
+  <h1>Verifique seu e-mail</h1>
+  <p>Se existir uma conta com esse e-mail, você vai receber um link para criar uma senha nova.</p>
+  <p class="nota">Não chegou? Olhe a pasta de spam. O link vale por 3 dias.</p>
+  <a class="botao" href="{% url 'contas:entrar' %}">Voltar para o login</a>
+</div>
+{% endblock %}

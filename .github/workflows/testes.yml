@@ -1,0 +1,33 @@
+# INTEGRAÇÃO CONTÍNUA: a cada "git push", o GitHub roda os testes e a checagem de código sozinho.
+# Se algo quebrar, aparece um X vermelho no commit (e você descobre ANTES de subir para o servidor).
+name: Testes da Liah
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  testes:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: liah-backend
+    env:
+      # Chaves FALSAS, só para os testes (as de verdade ficam no .env, que nunca vai pro GitHub)
+      DJANGO_SECRET_KEY: chave-falsa-so-para-testes
+      DJANGO_DEBUG: "True"
+      LIAH_HMAC_KEY: hmac-falsa-so-para-testes
+      LIAH_FERNET_KEY: ZmFrZS1rZXktZm9yLXRlc3RzLW9ubHktMzItYnl0ZXM=
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"     # a mesma do PythonAnywhere
+          cache: pip
+      - run: pip install -r requirements.txt ruff
+      - name: Checagem de código (ruff)
+        run: ruff check .
+      - name: Checagem do Django
+        run: python manage.py check
+      - name: Testes
+        run: python manage.py test

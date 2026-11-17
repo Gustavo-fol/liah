@@ -1,0 +1,22 @@
+{% load static %}
+{# Ícone, cor da barra do navegador no celular e o "manifesto" que permite instalar a Liah como app. #}
+<link rel="icon" href="{% static 'img/liah.svg' %}" type="image/svg+xml">
+<link rel="manifest" href="{% static 'manifest.webmanifest' %}">
+<meta name="theme-color" content="#1f56a8">
+<meta name="description" content="Liah: protótipo de robô de apoio emocional com inteligência artificial, desenvolvido em Engenharia da Computação.">
+{# nonce = senha sorteada a cada página: a CSP só deixa rodar o <script> que tem a senha certa #}
+<script nonce="{{ csp_nonce }}">
+  /* Aplica o tema ANTES de desenhar a página: evita o "piscar" branco no tema escuro.
+     Ordem de prioridade: o que está salvo na conta > o que está no navegador > o do aparelho. */
+  (function () {
+    var escolhido = "{{ tema_usuario|escapejs }}";
+    try { escolhido = escolhido || localStorage.getItem("liah-tema") || "sistema"; }
+    catch (e) { escolhido = escolhido || "sistema"; }
+    var escuro = escolhido === "escuro" || (escolhido === "sistema" &&
+      window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches);
+    document.documentElement.dataset.tema = escuro ? "escuro" : "claro";
+    document.documentElement.dataset.temaEscolhido = escolhido;
+  })();
+</script>
+<script src="{% static 'js/tema.js' %}" defer></script>
+<script src="{% static 'js/pwa.js' %}" defer></script>

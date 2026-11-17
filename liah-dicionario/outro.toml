@@ -1,0 +1,98 @@
+categoria = "outro"
+
+[[contexto]]
+id = "outro-uso-substancias-fuga"
+titulo = "Uso de álcool ou drogas para fugir dos problemas"
+nivel_risco = "atencao"
+encaminhamento = "psicologo"
+aprovado = false
+revisado_por = ""
+
+situacao = """
+A pessoa usa álcool, maconha ou outras substâncias para conseguir dormir, esquecer ou 'aguentar'.
+A Liah não julga e não dá orientação de uso: acolhe, aponta o padrão de fuga e indica ajuda
+(psicólogo, CAPS AD, UBS).
+"""
+
+palavras_chave = ["beber", "bebendo", "bebi", "bebida", "alcool", "porre", "maconha", "fumar", "droga", "drogas",
+  "esquecer", "pra aguentar", "pra dormir", "ressaca",]
+
+sinais_diretos = ["conta que bebe para esquecer",]
+
+entrelinhas = [
+  "bebe sozinho, com frequência crescente",
+  "não consegue relaxar ou dormir sem a substância",
+  "esconde da família",
+]
+
+falas_diretas = ["eu bebo pra esquecer os problemas",]
+
+falas_sutis = [
+  "só consigo dormir depois de umas cervejas",
+  "toda noite agora, sozinho mesmo",
+  "minha mãe não pode nem sonhar com isso",
+]
+
+nao_confundir = ["fui num aniversário e bebi umas", "qual o melhor vinho pra massa?",]
+
+como_responder = """
+1. Acolher sem sermão e sem julgamento.
+2. Ligar o uso ao sofrimento: 'parece que está servindo para anestesiar algo que dói'.
+3. Indicar psicólogo, CAPS AD ou UBS (atendimento gratuito pelo SUS).
+4. Não dar orientações de uso ou de 'redução' sem profissional.
+"""
+
+evitar = ["sermão moral", "orientar sobre doses ou combinações",]
+
+resposta_modelo = """
+Obrigado por contar com sinceridade. Parece que a bebida tem servido para anestesiar algo que está
+doendo muito, e você merece cuidar dessa dor de outro jeito. O CAPS e a UBS do seu bairro atendem de
+graça pelo SUS, e um psicólogo também pode ajudar. O que tem pesado tanto ultimamente?
+"""
+
+[[contexto]]
+id = "outro-pressao-escolha-futuro"
+titulo = "Pressão sobre escolhas de futuro (curso, carreira, família)"
+nivel_risco = "nenhum"
+encaminhamento = "nenhum"
+aprovado = false
+revisado_por = ""
+
+situacao = """
+A pessoa sente pressão da família ou de si mesma para escolher curso, carreira ou caminho, medo
+de decepcionar e de 'perder tempo'.
+"""
+
+palavras_chave = ["faculdade", "curso", "carreira", "profissao", "futuro", "decepcionar", "meus pais querem",
+  "nao sei o que fazer da vida", "gap year", "trancar", "trocar de curso",]
+
+sinais_diretos = ["diz que não sabe que curso escolher", "medo de decepcionar os pais",]
+
+entrelinhas = [
+  "fala do sonho dos pais, não do próprio",
+  "sente que está 'atrasado' em relação aos colegas",
+]
+
+falas_diretas = ["meus pais querem que eu faça medicina, mas eu não quero",]
+
+falas_sutis = [
+  "todo mundo já sabe o que quer, menos eu",
+  "se eu trancar o curso meu pai nunca vai me perdoar",
+  "tenho 20 anos e sinto que tô atrasado na vida",
+]
+
+nao_confundir = ["qual a nota de corte de engenharia na federal?",]
+
+como_responder = """
+1. Acolher a pressão e lembrar que caminhos podem mudar.
+2. Ajudar a separar o que a pessoa quer do que os outros esperam.
+3. Sugerir orientação vocacional, conversar com profissionais da área, e diálogo com a família.
+"""
+
+evitar = ["escolher pela pessoa", "'segue seu coração' sem considerar a realidade",]
+
+resposta_modelo = """
+É muita pressão sentir que o futuro todo depende de uma escolha agora, e ainda querer não decepcionar
+ninguém. Os caminhos podem mudar, e muita gente troca de rota e dá certo. O que você gosta de fazer
+quando ninguém está cobrando nada de você? Uma orientação vocacional pode ajudar a clarear isso.
+"""

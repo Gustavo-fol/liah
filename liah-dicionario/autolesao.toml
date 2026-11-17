@@ -1,0 +1,110 @@
+# ATENÇÃO: nunca escreva métodos, objetos, partes do corpo ou formas de esconder lesões.
+categoria = "autolesao"
+
+[[contexto]]
+id = "autolesao-alivio-emocional"
+titulo = "Machucar-se para aliviar a dor emocional"
+nivel_risco = "atencao"
+encaminhamento = "psicologo"
+aprovado = false
+revisado_por = ""
+
+situacao = """
+A pessoa se machuca de propósito para aliviar angústia, raiva ou vazio, ou para 'sentir alguma coisa'.
+Nem sempre há intenção de morrer, mas é um sinal de sofrimento intenso que precisa de cuidado
+profissional. Vergonha e segredo são comuns.
+"""
+
+palavras_chave = ["me machuco", "me machucar", "me cortar", "me corto", "automutilacao", "autolesao", "cicatriz",
+  "cicatrizes", "marcas", "alivio", "aliviar a dor", "sentir alguma coisa", "me punir",]
+
+sinais_diretos = ["conta que se machuca", "diz que voltou a se machucar",]
+
+entrelinhas = [
+  "usa manga comprida no calor, esconde braços ou pernas",
+  "fala em 'descontar' a raiva em si mesma",
+  "diz que precisava 'sentir alguma coisa' ou 'se punir'",
+  "conta que estava 'limpa' há um tempo",
+  "evita médico, piscina, praia",
+]
+
+falas_diretas = ["eu me machuco quando fico muito mal", "voltei a me cortar"]
+
+falas_sutis = [
+  "fui de casaco pra escola de novo, mesmo no calor",
+  "estava indo tão bem, 40 dias limpa, e estraguei tudo",
+  "quando a dor de dentro fica grande demais eu preciso fazer ela ir pra fora",
+  "eu mereço sentir dor depois do que eu fiz",
+  "ninguém pode ver meus braços",
+]
+
+nao_confundir = ["me machuquei jogando bola", "me cortei cortando cebola", "fiz uma tatuagem nova",]
+
+como_responder = """
+1. Acolher sem choque, sem bronca e sem exigir que pare na hora.
+2. Reconhecer que é uma forma de lidar com uma dor muito grande, e que existem jeitos menos perigosos.
+3. Perguntar se há ferimento que precisa de cuidado médico agora (se sim, procurar atendimento).
+4. Perguntar sobre pensamentos de morte.
+5. Incentivar a buscar psicólogo e a contar para um adulto ou pessoa de confiança; CVV 188 a qualquer hora.
+6. NÃO sugerir substitutos que imitam dor (gelo, elástico etc.).
+"""
+
+evitar = ["'por que você faz isso?' em tom de acusação", "dar detalhes sobre métodos ou cuidados para esconder",
+  "sugerir substitutos que causam dor", "'isso é para chamar atenção'",]
+
+resposta_modelo = """
+Obrigado por me contar, isso exige coragem. Se machucar costuma ser uma tentativa de aliviar uma dor muito
+grande aí dentro, e você merece cuidado, não julgamento. Você precisa de algum cuidado médico agora? Um
+psicólogo pode te ajudar a encontrar outros jeitos de lidar com essa dor, e o CVV atende 24h pelo 188.
+Tem alguém de confiança com quem você poderia falar sobre isso?
+"""
+
+[[contexto]]
+id = "autolesao-recaida-vergonha"
+titulo = "Recaída e vergonha depois de um período sem se machucar"
+nivel_risco = "atencao"
+encaminhamento = "psicologo"
+aprovado = false
+revisado_por = ""
+
+situacao = """
+A pessoa estava há um tempo sem se machucar e recaiu. Sente vergonha, fracasso, e pode esconder
+até do terapeuta. A recaída faz parte do processo de recuperação e não apaga o progresso.
+"""
+
+palavras_chave = ["recaida", "recai", "estraguei tudo", "dias limpa", "dias limpo", "contador", "voltei",
+  "fracasso", "decepcionei",]
+
+sinais_diretos = ["diz que teve uma recaída",]
+
+entrelinhas = [
+  "conta dias como em um contador",
+  "fala em ter 'estragado tudo' ou 'voltado à estaca zero'",
+  "medo de decepcionar o terapeuta ou a família",
+]
+
+falas_diretas = ["tive uma recaída ontem",]
+
+falas_sutis = [
+  "meu contador zerou",
+  "não vou ter coragem de contar pra minha psicóloga",
+  "voltei pra estaca zero, sou um fracasso",
+]
+
+nao_confundir = ["tive uma recaída na dieta", "voltei a fumar",]
+
+como_responder = """
+1. Acolher a vergonha: recaída não é fracasso e não apaga os dias de cuidado.
+2. Incentivar a contar para o psicólogo, que está preparado para isso.
+3. Perguntar se precisa de cuidado médico e sobre pensamentos de morte.
+4. Lembrar do CVV 188.
+"""
+
+evitar = ["'mas você estava indo tão bem'", "reforçar a ideia de contador como medida de valor",]
+
+resposta_modelo = """
+Uma recaída não apaga o caminho que você já fez, ela faz parte da recuperação de muita gente. Você não
+é um fracasso por isso. Seria muito importante contar para a sua psicóloga: ela está preparada para te
+ajudar sem julgamento. Você está bem fisicamente agora? Se precisar conversar a qualquer hora, o CVV
+atende pelo 188.
+"""

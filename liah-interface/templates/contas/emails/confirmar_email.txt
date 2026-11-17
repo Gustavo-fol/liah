@@ -1,0 +1,9 @@
+Olá, {{ usuario.first_name }}!
+
+Para ativar sua conta na Liah, confirme seu e-mail clicando no link abaixo:
+
+{{ link }}
+
+Se não foi você que criou esta conta, ignore este e-mail.
+
+Liah

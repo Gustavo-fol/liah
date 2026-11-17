@@ -1,0 +1,103 @@
+categoria = "relacionamentos"
+
+[[contexto]]
+id = "relacionamentos-termino"
+titulo = "Fim de namoro ou casamento"
+nivel_risco = "nenhum"
+encaminhamento = "nenhum"
+aprovado = false
+revisado_por = ""
+
+situacao = """
+A pessoa terminou ou foi deixada. Pode sentir rejeição, raiva, culpa, obsessão por entender o que
+deu errado, e ficar vigiando as redes do ex. Em alguns casos, o término desencadeia desesperança.
+"""
+
+palavras_chave = ["terminou", "terminei", "termino", "ex", "namorado", "namorada", "noivo", "noiva", "separacao",
+  "divorcio", "me largou", "me deixou", "trocou", "chifre", "traicao", "me traiu", "fim do namoro",]
+
+sinais_diretos = ["conta que terminou o namoro", "diz que foi traída",]
+
+entrelinhas = [
+  "olha as redes do ex o tempo todo",
+  "relê conversas antigas",
+  "se culpa por tudo ('se eu fosse diferente')",
+  "acha que nunca vai encontrar ninguém",
+]
+
+falas_diretas = ["minha namorada terminou comigo", "descobri que fui traído",]
+
+falas_sutis = [
+  "vi que ele já tá com outra no story",
+  "fiquei relendo nossas conversas a noite toda",
+  "se eu tivesse sido menos chata talvez ele ficasse",
+  "ninguém nunca vai gostar de mim de novo",
+]
+
+nao_confundir = ["como eu peço ela em namoro?", "terminei a série ontem",]
+
+como_responder = """
+1. Acolher a dor sem falar mal do ex e sem julgar.
+2. Ajudar a reduzir gatilhos (silenciar redes por um tempo).
+3. Tirar o peso da culpa total: relações são feitas por duas pessoas.
+4. Se aparecer desesperança ou ideia de não querer viver, mudar o cuidado (risco).
+"""
+
+evitar = ["'tem muito peixe no mar'", "falar mal do ex", "incentivar a voltar ou a se vingar",]
+
+resposta_modelo = """
+Término dói muito, ainda mais quando a gente fica revendo tudo e se culpando. Uma relação depende das
+duas pessoas, então a culpa não é só sua. Talvez ajude silenciar as redes dele por um tempo, para você
+respirar. Como você está se cuidando nesses dias?
+"""
+
+[[contexto]]
+id = "relacionamentos-conflito-familiar"
+titulo = "Brigas e conflitos em casa"
+nivel_risco = "nenhum"
+encaminhamento = "nenhum"
+aprovado = false
+revisado_por = ""
+
+situacao = """
+Brigas frequentes com pais, irmãos ou cônjuge; sentir-se incompreendido; clima pesado em casa.
+Importante diferenciar conflito comum de violência: se houver agressão, ameaça ou medo de voltar
+para casa, usar os contextos de violência.
+"""
+
+palavras_chave = ["briga", "brigando", "brigamos", "discussao", "meus pais", "minha mae", "meu pai", "padrasto",
+  "madrasta", "irmao", "irma", "em casa", "nao me entendem", "gritaria",]
+
+sinais_diretos = ["conta que brigou com a família", "diz que em casa ninguém o entende",]
+
+entrelinhas = [
+  "evita ficar em casa",
+  "passa o tempo todo trancado no quarto",
+  "fala do clima pesado como algo normal",
+]
+
+falas_diretas = ["briguei feio com a minha mãe", "meus pais brigam todo dia",]
+
+falas_sutis = [
+  "prefiro ficar na escola até mais tarde do que voltar pra casa",
+  "em casa ninguém me escuta, só gritam",
+  "coloco o fone no último volume pra não ouvir a briga",
+]
+
+nao_confundir = ["minha mãe me deixou ir no show!", "briguei com meu irmão pelo controle do videogame kkk",]
+
+como_responder = """
+1. Acolher e ouvir os dois lados com a pessoa, sem tomar partido.
+2. Sugerir formas de comunicação (falar num momento calmo, escrever uma carta).
+3. Perguntar com cuidado se alguém já foi agredido ou se a pessoa sente medo em casa: se sim,
+   seguir os contextos de violência.
+"""
+
+evitar = ["tomar partido contra os pais", "'família é assim mesmo'",]
+
+resposta_modelo = """
+Viver num clima de briga em casa cansa demais, ainda mais quando a gente sente que ninguém escuta.
+Posso te perguntar uma coisa importante: nessas brigas alguém já te machucou ou você sente medo de
+estar em casa? Se não, a gente pode pensar juntos em um jeito de você falar com a sua mãe num momento
+mais calmo.
+"""

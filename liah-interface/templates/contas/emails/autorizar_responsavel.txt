@@ -1,0 +1,13 @@
+Olá, {{ autorizacao.nome_responsavel }}.
+
+{{ menor.get_full_name }} ({{ menor.idade }} anos) criou uma conta na Liah, uma inteligência
+artificial de apoio emocional, e informou você como responsável.
+
+Como é menor de 18 anos, a conta só será liberada com a sua autorização.
+Para ver os detalhes e autorizar (ou não), acesse:
+
+{{ link }}
+
+O link vale por {{ dias }} dias. Se você não conhece esta pessoa, clique em "Não autorizo".
+
+Liah

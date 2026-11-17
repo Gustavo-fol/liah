@@ -1,0 +1,113 @@
+{% extends "base_interno.html" %}
+{% block titulo %}Painel{% endblock %}
+{% block conteudo %}
+<div class="cabecalho-relatorio">
+  <h1>Painel</h1>
+  <span class="selo">v{{ resumo.versao }} · etapa {{ resumo.etapa }} de 7: {{ resumo.etapa_nome }}</span>
+</div>
+<p class="nota">Visível só para a equipe. Quem não é da equipe recebe "página não encontrada" neste endereço.</p>
+
+<div class="cards">
+  <div class="card-num"><span>{{ total_usuarios }}</span>usuários cadastrados</div>
+  <div class="card-num"><span>{{ usuarios_ativos }}</span>contas ativas</div>
+  <div class="card-num"><span>{{ mensagens_24h }}</span>mensagens nas últimas 24 h</div>
+  <div class="card-num"><span>{{ conversas_hoje }}</span>conversas hoje</div>
+  <div class="card-num {% if alertas_semana %}alerta-num{% endif %}"><span>{{ alertas_semana }}</span>sinais de risco (7 dias)</div>
+  <div class="card-num {% if sem_ia_semana %}alerta-num{% endif %}"><span>{{ sem_ia_semana }}</span>respostas sem IA (7 dias)</div>
+  <div class="card-num"><span>{{ regras.aprovadas }}</span>regras aprovadas</div>
+  <div class="card-num"><span>{{ regras.rascunhos }}</span>regras aguardando psicólogo</div>
+</div>
+
+{# ---------------- Usuários e planos (do admin antigo) ---------------- #}
+<section class="painel-bloco">
+  <div class="cabecalho-relatorio">
+    <h2>Usuários e planos</h2>
+    <form method="get" class="busca-email" role="search">
+      <label for="busca-email" class="so-leitor">Buscar conta pelo e-mail exato</label>
+      <input id="busca-email" type="email" name="email" value="{{ busca }}" placeholder="e-mail exato da pessoa" autocomplete="off">
+      <button type="submit" class="botao neutro">Buscar</button>
+      {% if busca %}<a href="{% url 'interno:painel' %}" class="botao neutro">Limpar</a>{% endif %}
+    </form>
+  </div>
+  <p class="nota">{% if busca %}Resultado da busca.{% else %}Os 20 cadastros mais recentes.{% endif %}
+    O e-mail aparece mascarado e o conteúdo das conversas nunca aparece aqui.</p>
+  <div class="tabela-rolagem">
+  <table class="tabela">
+    <thead><tr><th>Conta</th><th>E-mail</th><th>Tipo</th><th>Situação</th><th>Conversas</th><th>Último acesso</th><th>Plano</th></tr></thead>
+    <tbody>
+      {% for l in linhas %}
+        <tr>
+          <td>nº {{ l.u.pk }}</td>
+          <td>{{ l.email }}</td>
+          <td><span class="selo {% if l.papel == 'equipe' %}selo-equipe{% endif %}">{{ l.papel }}</span></td>
+          <td>{{ l.u.get_situacao_display }}</td>
+          <td>{{ l.u.qtd_conversas }}</td>
+          <td>{{ l.u.last_login|date:"d/m/Y H:i"|default:"nunca" }}</td>
+          <td>
+            {% if user.is_superuser %}
+              <form method="post" action="{% url 'interno:mudar_plano' l.u.pk %}" class="form-plano">
+                {% csrf_token %}
+                <label for="plano-{{ l.u.pk }}" class="so-leitor">Plano da conta nº {{ l.u.pk }}</label>
+                <select id="plano-{{ l.u.pk }}" name="plano">
+                  {% for valor, nome in planos %}<option value="{{ valor }}" {% if valor == l.u.plano %}selected{% endif %}>{{ nome }}</option>{% endfor %}
+                </select>
+                <button type="submit" class="botao neutro">Salvar</button>
+              </form>
+            {% else %}{{ l.u.get_plano_display }}{% endif %}
+          </td>
+        </tr>
+      {% empty %}
+        <tr><td colspan="7" class="nota">{% if busca %}Nenhuma conta com esse e-mail.{% else %}Nenhum usuário ainda.{% endif %}</td></tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  </div>
+  {% if user.is_superuser %}<p class="nota">Mudar o plano fica registrado no histórico de ações da equipe. É assim que o premium é ativado até o pagamento automático existir.</p>{% endif %}
+</section>
+
+<div class="graficos">
+  {# ---------------- Como as respostas foram dadas ---------------- #}
+  <section class="painel-bloco">
+    <h2>Como as respostas foram dadas (30 dias)</h2>
+    {% for nome, n, pct in origens %}
+      <div class="linha-barra"><span>{{ nome }}</span><div class="trilho"><div style="width: {{ pct }}%"></div></div><b>{{ pct }}%</b></div>
+    {% empty %}<p class="nota">Sem dados ainda.</p>{% endfor %}
+    <p class="nota">No lugar de "perguntas que a Liah não entendeu" do site antigo: a equipe vê só quantas respostas
+      caíram na reserva ({{ sem_ia_semana }} em 7 dias), nunca o que a pessoa escreveu (LGPD).</p>
+  </section>
+
+  {# ---------------- IA online ---------------- #}
+  <section class="painel-bloco">
+    <h2>IA online</h2>
+    <p>Principal: <strong>{% if cfg.principal_pronta %}{{ cfg.get_provedor_principal_display }} ({{ cfg.modelo_principal }}){% else %}não configurada{% endif %}</strong></p>
+    <p>Secundária: <strong>{% if cfg.secundaria_pronta %}{{ cfg.get_provedor_secundario_display }} ({{ cfg.modelo_secundario }}){% else %}não configurada{% endif %}</strong>
+       {% if not cfg.ativa %}<span class="selo selo-alto">IA DESLIGADA</span>{% endif %}</p>
+    {% if user.is_superuser %}<a class="botao" href="{% url 'interno:ia' %}">Configurar IAs</a>{% endif %}
+  </section>
+</div>
+
+{# ---------------- Backup ---------------- #}
+<section class="painel-bloco">
+  <h2>Backup do banco</h2>
+  <p>{% if backup_ultimo %}Último: <strong>{{ backup_ultimo.name }}</strong> (há {{ backup_idade }}) · {{ backup_qtd }} guardado(s)
+     {% else %}Nenhum backup ainda.{% endif %}</p>
+  <p class="nota">É automático: ao abrir este painel, se o último tiver mais de 24 h, um novo é feito.
+     Baixe uma cópia de vez em quando e guarde <strong>longe do arquivo .env</strong>.</p>
+  {% if user.is_superuser %}
+  <div class="barra-acoes">
+    <form method="post" action="{% url 'interno:fazer_backup' %}">{% csrf_token %}<button type="submit" class="botao">Fazer backup agora</button></form>
+    {% if backup_ultimo %}<a class="botao neutro" href="{% url 'interno:baixar_backup' %}">Baixar o último backup</a>{% endif %}
+  </div>
+  {% endif %}
+</section>
+
+<section class="painel-bloco">
+  <h2>Atalhos</h2>
+  <div class="barra-acoes">
+    <a class="botao" href="{% url 'interno:relatorios' %}">Relatórios e planilhas</a>
+    <a class="botao neutro" href="{% url 'interno:dicionario' %}">Dicionário</a>
+    <a class="botao neutro" href="{% url 'nucleo:sobre' %}">Página "Sobre a Liah"</a>
+    {% if user.is_superuser %}<a class="botao neutro" href="{% url 'admin:index' %}">Abrir o admin do Django</a>{% endif %}
+  </div>
+</section>
+{% endblock %}

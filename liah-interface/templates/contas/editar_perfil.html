@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block titulo %}Editar perfil - Liah{% endblock %}
+{% block conteudo %}
+{% include "contas/_voltar.html" with destino="contas:painel" texto="Voltar ao painel" %}
+<h1>Editar perfil</h1>
+<form method="post" class="formulario" novalidate>
+  {% csrf_token %}
+  <fieldset>
+    <legend>Seu nome</legend>
+    <div class="linha">
+      {% include "contas/_campo.html" with campo=form.first_name %}
+      {% include "contas/_campo.html" with campo=form.last_name %}
+    </div>
+  </fieldset>
+  <fieldset>
+    <legend>Dados que não podem ser alterados aqui</legend>
+    <ul class="dados">
+      <li><span>E-mail</span> {{ user.email }}</li>
+      <li><span>Nascimento</span> {{ user.data_nascimento|date:"d/m/Y"|default:"—" }}</li>
+      <li><span>CPF</span> {{ user.cpf_mascarado }}</li>
+    </ul>
+    <p class="nota">Precisa corrigir algum deles? Fale com o suporte: liahrobo.oficial@gmail.com</p>
+  </fieldset>
+  <div class="botoes">
+    <button type="submit" class="botao">Salvar</button>
+    <a href="{% url 'contas:painel' %}" class="botao neutro">Cancelar</a>
+  </div>
+</form>
+{% endblock %}

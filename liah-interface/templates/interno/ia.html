@@ -1,0 +1,50 @@
+{% extends "base_interno.html" %}
+{% block titulo %}IA{% endblock %}
+{% block conteudo %}
+<h1>Configuração das IAs</h1>
+<p class="nota">As chaves ficam criptografadas no banco e nunca aparecem de novo nesta tela. Só o superusuário vê esta página.</p>
+
+<form method="post" class="formulario" novalidate autocomplete="off">
+  {% csrf_token %}
+  {% include "contas/_erros_gerais.html" %}
+
+  <fieldset>
+    <legend>Geral</legend>
+    {% include "contas/_campo.html" with campo=form.ativa %}
+  </fieldset>
+
+  <fieldset>
+    <legend>IA principal <small class="nota">(conversa com o usuário e analisa o dicionário)</small></legend>
+    <div class="linha">
+      {% include "contas/_campo.html" with campo=form.provedor_principal %}
+      {% include "contas/_campo.html" with campo=form.modelo_principal %}
+    </div>
+    <p class="nota">Chave atual: <strong>{{ cfg.final_chave_principal }}</strong></p>
+    {% include "contas/_campo.html" with campo=form.nova_chave_principal %}
+    {% include "contas/_campo.html" with campo=form.apagar_chave_principal %}
+    <button type="submit" name="acao" value="testar_principal" class="botao neutro">Salvar e testar a principal</button>
+  </fieldset>
+
+  <fieldset>
+    <legend>IA secundária <small class="nota">(só para o laboratório: escreve falas fictícias)</small></legend>
+    <div class="linha">
+      {% include "contas/_campo.html" with campo=form.provedor_secundario %}
+      {% include "contas/_campo.html" with campo=form.modelo_secundario %}
+    </div>
+    <p class="nota">Chave atual: <strong>{{ cfg.final_chave_secundaria }}</strong></p>
+    {% include "contas/_campo.html" with campo=form.nova_chave_secundaria %}
+    {% include "contas/_campo.html" with campo=form.apagar_chave_secundaria %}
+    <button type="submit" name="acao" value="testar_secundaria" class="botao neutro">Salvar e testar a secundária</button>
+  </fieldset>
+
+  <button type="submit" name="acao" value="salvar" class="botao">Salvar</button>
+</form>
+
+{% if modelos %}
+<section class="painel-bloco">
+  <h2>Modelos disponíveis na sua conta ({{ modelos|length }})</h2>
+  <p class="nota">Copie o nome exato para o campo "modelo".</p>
+  <ul class="lista-modelos">{% for m in modelos %}<li><code>{{ m }}</code></li>{% endfor %}</ul>
+</section>
+{% endif %}
+{% endblock %}

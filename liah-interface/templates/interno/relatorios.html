@@ -1,0 +1,124 @@
+{% extends "base_interno.html" %}
+{% block titulo %}Relatórios{% endblock %}
+{% block conteudo %}
+<div class="cabecalho-relatorio">
+  <h1>Relatórios</h1>
+  <nav class="periodos" aria-label="Período">
+    {% for p in periodos %}
+      <a href="?dias={{ p }}" class="{% if p == dias %}ativo{% endif %}">{{ p }} dias</a>
+    {% endfor %}
+  </nav>
+</div>
+<p class="nota">Só números agregados. O conteúdo das conversas nunca aparece aqui.</p>
+
+{# ---------------- totais do período ---------------- #}
+<div class="cards">
+  <div class="card-num"><span>{{ totais.mensagens }}</span>mensagens dos usuários</div>
+  <div class="card-num"><span>{{ totais.conversas }}</span>conversas novas</div>
+  <div class="card-num"><span>{{ totais.novos_usuarios }}</span>novos cadastros</div>
+  <div class="card-num {% if totais.alertas_alto %}alerta-num{% endif %}"><span>{{ totais.alertas_atencao|add:totais.alertas_alto }}</span>sinais de risco ({{ totais.alertas_alto }} alto)</div>
+  <div class="card-num"><span>{{ totais.logins_ok }}</span>logins</div>
+  <div class="card-num {% if totais.logins_falhos > 20 %}alerta-num{% endif %}"><span>{{ totais.logins_falhos }}</span>logins com erro</div>
+</div>
+
+{# ---------------- saúde do sistema ---------------- #}
+<section class="painel-bloco">
+  <h2>Saúde do sistema</h2>
+  <ul class="saude">
+    <li class="{% if saude.backup_velho %}ruim{% else %}bom{% endif %}">
+      <strong>Backup:</strong>
+      {% if saude.ultimo_backup %}último em {{ saude.ultimo_backup|date:"d/m/Y H:i" }} ({{ saude.qtd_backups }} guardados){% else %}nenhum backup encontrado{% endif %}
+      {% if saude.backup_velho %} · rode <code>python manage.py backup_banco</code>{% endif %}
+    </li>
+    <li class="neutro"><strong>Banco de dados:</strong> {{ saude.tamanho_banco_mb }} MB</li>
+    <li class="{% if not saude.ia_pronta or saude.falha_ia_alerta %}ruim{% else %}bom{% endif %}">
+      <strong>IA online:</strong>
+      {% if not saude.ia_ativa %}desligada pelo interruptor{% elif saude.ia_pronta %}configurada{% else %}não configurada{% endif %}
+      · {{ saude.falha_ia_pct }}% das respostas usaram a reserva (sem IA)
+      {% if saude.falha_ia_alerta %} · <strong>verifique o crédito e a chave da API</strong>{% endif %}
+    </li>
+    <li class="{% if saude.email_modo == 'gmail' %}bom{% else %}neutro{% endif %}"><strong>E-mail:</strong> {% if saude.email_modo == 'gmail' %}Gmail oficial{% else %}modo teste (terminal){% endif %}</li>
+    <li class="{% if saude.google_login %}bom{% else %}neutro{% endif %}"><strong>Login com Google:</strong> {{ saude.google_login|yesno:"ligado,desligado" }}</li>
+    <li class="{% if saude.regras_pendentes %}atencao{% else %}bom{% endif %}"><strong>Dicionário:</strong> {{ saude.regras_pendentes }} regra(s) esperando o psicólogo</li>
+    <li class="{% if saude.debug %}atencao{% else %}bom{% endif %}"><strong>Modo:</strong> {% if saude.debug %}desenvolvimento (DEBUG ligado){% else %}produção{% endif %} · Django {{ saude.versao_django }} · Python {{ saude.versao_python }}</li>
+  </ul>
+</section>
+
+{# ---------------- gráficos ---------------- #}
+<div class="graficos">
+  {% for titulo, barras, cor in graficos %}
+    <section class="painel-bloco">
+      <h2>{{ titulo }}</h2>
+      <div class="grafico cor-{{ cor }}" role="img" aria-label="{{ titulo }}">
+        {% for b in barras %}
+          <div class="barra" style="--h: {{ b.pct }}%" title="{{ b.dia|date:'d/m' }}: {{ b.n }}"></div>
+        {% endfor %}
+      </div>
+      <div class="grafico-eixo"><span>{{ barras.0.dia|date:"d/m" }}</span><span>hoje</span></div>
+    </section>
+  {% endfor %}
+</div>
+
+{# ---------------- perfil e respostas ---------------- #}
+<div class="graficos">
+  <section class="painel-bloco">
+    <h2>Quem usa a Liah ({{ perfil.total }} pessoas)</h2>
+    <h3 class="sub-h">Faixa etária</h3>
+    {% for nome, n in perfil.faixas %}
+      <div class="linha-barra"><span>{{ nome }}</span><div class="trilho"><div style="width: {% widthratio n perfil.total 100 %}%"></div></div><b>{{ n }}</b></div>
+    {% empty %}<p class="nota">Sem usuários ainda.</p>{% endfor %}
+    <h3 class="sub-h">Situação e plano</h3>
+    <p>{% for nome, n in perfil.situacoes %}<span class="selo">{{ nome }}: {{ n }}</span> {% endfor %}</p>
+    <p>{% for nome, n in perfil.planos %}<span class="selo">{{ nome }}: {{ n }}</span> {% endfor %}</p>
+    <p class="nota">{{ perfil.com_google }} entram com Google · {{ perfil.criancas }} contas de criança ·
+       {{ perfil.treino_pct }}% autorizam usar as conversas no treino</p>
+  </section>
+
+  <section class="painel-bloco">
+    <h2>De onde vieram as respostas da Liah</h2>
+    {% for nome, n, pct in origens %}
+      <div class="linha-barra"><span>{{ nome }}</span><div class="trilho"><div style="width: {{ pct }}%"></div></div><b>{{ pct }}%</b></div>
+    {% empty %}<p class="nota">Nenhuma resposta no período.</p>{% endfor %}
+    <h3 class="sub-h">As respostas ajudaram? (👍 / 👎 das pessoas)</h3>
+    {% if avaliacoes.total %}
+      <p><strong>{{ avaliacoes.pct }}%</strong> disseram que ajudou ({{ avaliacoes.util }} de {{ avaliacoes.total }} avaliações)</p>
+      {% for nome, n, pct in avaliacoes.por_origem %}
+        <div class="linha-barra"><span>{{ nome }}</span><div class="trilho"><div style="width: {{ pct }}%"></div></div><b>{{ pct }}%</b></div>
+      {% endfor %}
+      <p class="nota">Cada barra: % de "ajudou" entre as respostas avaliadas daquela origem.</p>
+    {% else %}<p class="nota">Ninguém avaliou respostas neste período ainda.</p>{% endif %}
+    <h3 class="sub-h">Laboratório das duas IAs</h3>
+    <p>{{ lab.acertos }} acertos em {{ lab.total }} testes{% if lab.total %} (<strong>{{ lab.pct }}%</strong>){% endif %}</p>
+  </section>
+</div>
+
+{# ---------------- planilhas ---------------- #}
+<section class="painel-bloco">
+  <h2>Baixar planilhas (abrem no Excel)</h2>
+  <div class="barra-acoes">
+    <a class="botao" href="{% url 'interno:exportar_resumo' %}?dias={{ dias }}">Resumo por dia ({{ dias }} dias)</a>
+    <a class="botao neutro" href="{% url 'interno:exportar_usuarios' %}">Usuários (anônimo)</a>
+    <a class="botao neutro" href="{% url 'interno:exportar_laboratorio' %}">Laboratório</a>
+    <a class="botao neutro" href="{% url 'interno:dicionario_exportar' %}">Dicionário</a>
+    {% if user.is_superuser %}<a class="botao neutro" href="{% url 'interno:exportar_seguranca' %}?dias={{ dias }}">Segurança ({{ dias }} dias)</a>{% endif %}
+  </div>
+  <p class="nota">A planilha de usuários não tem nome, e-mail nem CPF (LGPD). A de segurança tem IP e só o super admin baixa. Toda exportação fica registrada abaixo.</p>
+</section>
+
+{# ---------------- ações da equipe ---------------- #}
+<section class="painel-bloco">
+  <h2>Histórico de ações da equipe</h2>
+  <div class="tabela-rolagem">
+  <table class="tabela">
+    <thead><tr><th>Quando</th><th>Quem</th><th>O que</th></tr></thead>
+    <tbody>
+      {% for a in acoes %}
+        <tr><td>{{ a.criado_em|date:"d/m/Y H:i" }}</td><td>{{ a.usuario.email|default:"(conta excluída)" }}</td><td>{{ a.detalhe }}</td></tr>
+      {% empty %}
+        <tr><td colspan="3" class="nota">Nenhuma ação registrada ainda.</td></tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  </div>
+</section>
+{% endblock %}

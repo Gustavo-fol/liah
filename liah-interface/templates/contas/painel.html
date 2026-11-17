@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% block titulo %}Painel - Liah{% endblock %}
+{% block conteudo %}
+<h1>Olá, {{ user.first_name|default:"bem-vindo(a)" }}!</h1>
+<p class="sub">Este é o seu painel.</p>
+<a class="botao" href="{% url 'nucleo:chat' %}">Conversar com a Liah</a>
+{% if user.is_staff %} <a class="botao neutro" href="{% url 'interno:painel' %}">Área interna</a>{% endif %}
+<br><br>
+
+<section class="bloco">
+  <h2>Minha conta</h2>
+  <ul class="dados">
+    <li><span>E-mail</span> {{ user.email }}</li>
+    <li><span>CPF</span> {{ user.cpf_mascarado }}</li>
+    <li><span>Plano</span> {{ user.get_plano_display }}</li>
+    {% if user.responsavel %}<li><span>Responsável</span> {{ user.responsavel.get_full_name }}</li>{% endif %}
+  </ul>
+</section>
+
+{% if user.pode_ser_responsavel %}
+<section class="bloco">
+  <h2>Contas que eu gerencio</h2>
+  {% if dependentes %}
+    <ul class="dados">
+      {% for d in dependentes %}
+        <li><span>{{ d.get_full_name }}</span> {{ d.email }} ({{ d.idade }} anos)
+            <a class="link-perigo" href="{% url 'contas:excluir_dependente' d.pk %}">Excluir</a></li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p class="nota">Nenhuma conta de criança criada ainda.</p>
+  {% endif %}
+  <a class="botao" href="{% url 'contas:cadastro_dependente' %}">Criar conta para uma criança</a>
+</section>
+{% endif %}
+
+<section class="bloco">
+  <h2>Configurações</h2>
+  <div class="botoes">
+    <a class="botao neutro" href="{% url 'contas:editar_perfil' %}">Editar perfil</a>
+    <a class="botao neutro" href="{% url 'contas:trocar_senha' %}">{% if user.has_usable_password %}Trocar senha{% else %}Criar senha{% endif %}</a>
+    <a class="botao neutro" href="{% url 'contas:privacidade' %}">Privacidade e meus dados</a>
+  </div>
+</section>
+
+{% if not user.responsavel and not user.is_superuser %}
+<section class="bloco perigo">
+  <h2>Zona de perigo</h2>
+  <p class="nota">Excluir sua conta apaga todos os seus dados da Liah, para sempre.</p>
+  <a class="botao perigo" href="{% url 'contas:excluir_conta' %}">Excluir minha conta</a>
+</section>
+{% endif %}
+{% endblock %}

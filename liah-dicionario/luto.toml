@@ -1,0 +1,186 @@
+categoria = "luto"
+
+[[contexto]]
+id = "luto-animal-estimacao"
+titulo = "Perda de animal de estimação"
+nivel_risco = "nenhum"
+encaminhamento = "nenhum"
+aprovado = false
+revisado_por = ""
+
+situacao = """
+A pessoa perdeu um cachorro, gato ou outro animal com quem tinha vínculo forte.
+Muitas vezes sente que não tem 'direito' de sofrer tanto, porque os outros minimizam
+('era só um bicho'). Culpa por não ter percebido a doença ou por ter autorizado a eutanásia é comum.
+"""
+
+palavras_chave = ["cachorro", "cachorrinho", "dog", "gato", "gatinho", "gata", "bichinho", "pet",
+  "animal", "veterinario", "eutanasia", "sacrificar", "racao", "coleira", "caminha dele", "caminha dela",]
+
+sinais_diretos = ["conta que o animal morreu", "diz que está triste pela perda do pet", "fala da eutanásia",]
+
+entrelinhas = [
+  "fala do animal no passado sem explicar por quê",
+  "conta que a casa ficou silenciosa ou que ainda guarda a coleira, o pote, a caminha",
+  "se justifica por estar triste ('sei que é bobeira, mas...')",
+  "culpa: 'se eu tivesse levado antes no veterinário'",
+  "evita passar por lugares onde passeava com o animal",
+]
+
+falas_diretas = [
+  "meu cachorro morreu ontem e eu não paro de chorar",
+  "tive que fazer a eutanásia da minha gata e tô me sentindo péssima",
+  "perdi meu bichinho de 14 anos",
+]
+
+falas_sutis = [
+  "oi, hoje acordei e não tinha ninguém me esperando na porta",
+  "ainda não tive coragem de guardar a coleira dele",
+  "sei que é bobeira ficar assim por causa de um animal, mas a casa tá muito quieta",
+  "fico pensando se eu tivesse levado no veterinário uma semana antes",
+  "meu pai disse pra eu pegar outro e esquecer, mas não é assim",
+  "passei pela praça onde a gente andava e tive que voltar pra casa",
+]
+
+nao_confundir = [
+  "meu cachorro tá doente, o que eu dou pra ele?",
+  "quero adotar um gato, qual raça é boa pra apartamento?",
+  "meu gato derrubou tudo da mesa kkkk",
+]
+
+como_responder = """
+1. Validar que o luto por um animal é real e legítimo: ele era da família.
+2. Nunca minimizar nem sugerir 'pegar outro'.
+3. Se houver culpa, acolher sem julgamento e lembrar que a pessoa agiu com o que sabia na época.
+4. Convidar a pessoa a contar uma lembrança boa do animal (o nome, uma mania).
+5. Se o sofrimento durar muitas semanas ou atrapalhar a rotina, sugerir conversar com um psicólogo.
+"""
+
+evitar = ["dizer 'era só um animal'", "sugerir adotar outro logo", "frases prontas como 'ele virou estrelinha'",]
+
+resposta_modelo = """
+Sinto muito pela sua perda. Ele não era 'só um animal', era parte da sua família, e é natural a casa
+parecer vazia agora. A culpa que você descreve aparece muito no luto, mas você cuidou dele com o que
+sabia naquele momento. Se quiser, me conta como ele se chamava e do que mais gostava de fazer?
+"""
+
+[[contexto]]
+id = "luto-familiar-proximo"
+titulo = "Morte de familiar próximo (pai, mãe, avós, irmãos)"
+nivel_risco = "atencao"
+encaminhamento = "psicologo"
+aprovado = false
+revisado_por = ""
+
+situacao = """
+Morte recente ou não tão recente de alguém central na vida da pessoa. Pode vir com choque,
+raiva, culpa por coisas não ditas, sobrecarga com burocracias e com a família, e mudança brusca
+de papel (ter que cuidar de alguém, assumir contas). Luto intenso aumenta o risco de depressão.
+"""
+
+palavras_chave = ["faleceu", "falecimento", "morreu", "morte", "velorio", "enterro", "funeral", "cemiterio",
+  "luto", "minha mae", "meu pai", "minha vo", "meu vo", "minha avo", "meu avo", "meu irmao", "minha irma",
+  "inventario", "missa de setimo dia", "partiu",]
+
+sinais_diretos = ["conta que o familiar morreu", "fala do velório ou enterro", "diz que não consegue aceitar",]
+
+entrelinhas = [
+  "fala da pessoa no passado ou corrige o tempo verbal",
+  "menciona papelada, inventário, ter que esvaziar a casa ou o quarto",
+  "conta que ainda manda mensagem ou liga para o número da pessoa",
+  "culpa por uma briga, uma visita que não fez ou algo que não disse",
+  "diz que 'tem que ser forte' pelos outros e não chora",
+  "datas e cheiros disparam a lembrança",
+]
+
+falas_diretas = [
+  "minha mãe faleceu mês passado e eu não sei como continuar",
+  "o enterro do meu avô foi ontem",
+  "meu pai morreu e eu não consegui me despedir",
+]
+
+falas_sutis = [
+  "hoje fui arrumar o guarda-roupa dela e não consegui terminar",
+  "ainda tenho o áudio dele no whatsapp, escuto toda noite",
+  "agora sou eu que tenho que resolver tudo, cartório, banco, tudo",
+  "todo mundo diz que eu tô sendo muito forte, mas ninguém sabe",
+  "a última coisa que eu falei pra ele foi grosseria",
+  "o almoço de domingo nunca mais vai ser igual",
+]
+
+nao_confundir = [
+  "minha avó tá internada, mas tá melhorando",
+  "meu pai vive me cobrando por nota",
+  "assisti um filme sobre morte e fiquei pensativo",
+]
+
+como_responder = """
+1. Dar os pêsames de forma simples e humana; perguntar o nome da pessoa e como era a relação.
+2. Normalizar emoções misturadas: tristeza, raiva, alívio, culpa.
+3. Se houver culpa por algo não dito, acolher e oferecer a ideia de escrever uma carta ou falar em voz alta.
+4. Perguntar como a pessoa está dormindo e comendo, e se tem alguém por perto.
+5. Sugerir apoio de psicólogo (luto é um bom motivo para começar terapia) e grupos de apoio ao luto.
+6. Ficar atento a frases de querer 'ir junto' ou 'não ver sentido': isso muda o risco.
+"""
+
+evitar = ["'ele está num lugar melhor' (pode ferir quem não tem fé)", "'o tempo cura tudo'", "comparar perdas",]
+
+resposta_modelo = """
+Sinto muito, de verdade. Perder alguém tão importante mexe com tudo, e é muito peso ter que ser forte
+para os outros e ainda resolver burocracias ao mesmo tempo. Não existe jeito certo de viver o luto.
+Como você tem conseguido dormir e se cuidar nesses dias? Conversar com um psicólogo pode ajudar muito
+a atravessar esse momento, e eu fico aqui com você também.
+"""
+
+[[contexto]]
+id = "luto-data-marcante"
+titulo = "Datas marcantes depois de uma perda (aniversário, Natal, Dia das Mães)"
+nivel_risco = "atencao"
+encaminhamento = "nenhum"
+aprovado = false
+revisado_por = ""
+
+situacao = """
+A perda pode ter sido há meses ou anos, mas uma data reabre a dor: aniversário de morte,
+aniversário da pessoa, festas de fim de ano, Dia das Mães ou dos Pais. A pessoa às vezes nem
+liga a tristeza à data.
+"""
+
+palavras_chave = ["dia das maes", "dia dos pais", "natal", "ano novo", "aniversario dela", "aniversario dele",
+  "faz um ano", "faz dois anos", "faz anos que", "nessa epoca", "data", "saudade",]
+
+sinais_diretos = ["diz que a data lembra a pessoa que morreu", "conta que faz um ano da morte",]
+
+entrelinhas = [
+  "tristeza sem motivo aparente perto de uma data",
+  "irritação com propagandas, enfeites, músicas de festa",
+  "evita confraternizações de família",
+  "diz que 'deveria ter superado já'",
+]
+
+falas_diretas = ["amanhã faz um ano que meu pai morreu", "o dia das mães é o pior dia do ano pra mim",]
+
+falas_sutis = [
+  "não sei por que tô assim essa semana, nem aconteceu nada",
+  "todo mundo postando foto com a mãe e eu só quero que esse domingo acabe",
+  "não vou na ceia esse ano, a cadeira vazia me mata",
+  "já devia ter passado, né? faz três anos",
+  "odeio dezembro",
+]
+
+nao_confundir = ["que presente eu dou pra minha mãe no dia das mães?", "não gosto de natal porque é muito consumista",]
+
+como_responder = """
+1. Ajudar a pessoa a ligar o que sente à data, com delicadeza ('será que essa data mexe com você?').
+2. Dizer que saudade não tem prazo e que datas reabrem a dor mesmo anos depois.
+3. Sugerir formas de homenagear (acender uma vela, cozinhar a receita da pessoa, visitar um lugar).
+4. Se a pessoa estiver isolada, incentivar a ficar perto de alguém de confiança nesse dia.
+"""
+
+evitar = ["'já faz tanto tempo'", "insistir para a pessoa ir à festa",]
+
+resposta_modelo = """
+Às vezes o corpo lembra antes da gente: datas assim costumam reabrir a saudade, mesmo depois de anos,
+e isso não quer dizer que você não superou. Não existe prazo para sentir falta de alguém que a gente ama.
+Tem alguma forma de lembrar dela nesse dia que te faria bem, ou alguém com quem você possa passar a data?
+"""

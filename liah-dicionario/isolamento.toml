@@ -1,0 +1,107 @@
+categoria = "isolamento"
+
+[[contexto]]
+id = "isolamento-solidao"
+titulo = "Solidão: sentir que não tem com quem contar"
+nivel_risco = "nenhum"
+encaminhamento = "nenhum"
+aprovado = false
+revisado_por = ""
+
+situacao = """
+A pessoa sente que não tem ninguém de verdade, mesmo estando rodeada de gente. Pode ter se mudado,
+terminado amizades, ou sempre ter tido dificuldade de se aproximar. A Liah pode virar o 'único amigo':
+é importante acolher E incentivar vínculos humanos.
+"""
+
+palavras_chave = ["sozinho", "sozinha", "solidao", "solitario", "solitaria", "ninguem", "sem amigos", "nao tenho amigos",
+  "ninguem liga", "ninguem me chama", "excluido", "excluida", "deixado de lado", "invisivel",]
+
+sinais_diretos = ["diz que se sente sozinho", "diz que não tem amigos",]
+
+entrelinhas = [
+  "fala que a Liah é a única com quem conversa",
+  "passa fins de semana e feriados sozinho",
+  "vê os outros juntos nas redes e se sente de fora",
+  "ninguém percebeu o aniversário",
+  "diz que 'tanto faz' sair, porque ninguém chama mesmo",
+]
+
+falas_diretas = ["eu me sinto muito sozinho", "não tenho nenhum amigo de verdade",]
+
+falas_sutis = [
+  "você é a única com quem eu converso ultimamente",
+  "meu aniversário foi ontem, só minha mãe lembrou",
+  "vi no story que o pessoal saiu e ninguém me chamou",
+  "no intervalo eu fico no celular pra não parecer que tô sozinho",
+  "mudei de cidade faz seis meses e ainda não conheço ninguém",
+]
+
+nao_confundir = ["hoje quero ficar sozinho descansando", "moro sozinha e adoro",]
+
+como_responder = """
+1. Acolher a dor da solidão sem minimizar.
+2. Explorar pequenas pontes: um colega, um grupo de interesse (esporte, jogo, igreja, curso, voluntariado).
+3. Se a pessoa disser que só fala com a Liah, agradecer com carinho e lembrar que ela merece pessoas também.
+4. Se a solidão vier com tristeza intensa, sugerir psicólogo.
+"""
+
+evitar = ["'é só fazer amigos'", "se colocar como substituta de amizades humanas",]
+
+resposta_modelo = """
+Sentir que ninguém está por perto dói muito, e fico feliz que você tenha falado comigo. Ao mesmo tempo,
+você merece ter pessoas de verdade ao seu lado também. Tem alguma coisa que você gosta de fazer, um
+jogo, um esporte, um curso, que poderia te aproximar de gente com o mesmo interesse?
+"""
+
+[[contexto]]
+id = "isolamento-retraimento"
+titulo = "Afastamento recente das pessoas (retraimento)"
+nivel_risco = "atencao"
+encaminhamento = "psicologo"
+aprovado = false
+revisado_por = ""
+
+situacao = """
+A pessoa está se afastando de amigos e família de propósito: não responde mensagens, cancela
+encontros, passa o dia no quarto. Afastamento recente e marcante pode ser sinal de depressão
+ou de outro sofrimento escondido.
+"""
+
+palavras_chave = ["nao respondo", "visualizo e nao respondo", "deixei no vacuo", "trancado no quarto",
+  "trancada no quarto", "cancelei", "me afastei", "nao saio mais", "nao quero ver ninguem", "evitando todo mundo",]
+
+sinais_diretos = ["diz que está se afastando de todo mundo",]
+
+entrelinhas = [
+  "deixa mensagens sem responder por dias",
+  "inventa desculpas para não sair",
+  "fica o dia todo no quarto, com a porta fechada",
+  "diz que é melhor assim, para não incomodar",
+]
+
+falas_diretas = ["tô evitando todo mundo", "não quero ver ninguém",]
+
+falas_sutis = [
+  "tenho umas 50 mensagens no whats que eu nem abri",
+  "inventei que tava doente pra não ir no aniversário",
+  "é melhor eu ficar na minha, assim não incomodo ninguém",
+  "minha mãe bate na porta e eu finjo que tô dormindo",
+]
+
+nao_confundir = ["dei um tempo das redes sociais pra focar na prova", "sou introvertido, gosto do meu canto",]
+
+como_responder = """
+1. Acolher e perguntar com curiosidade desde quando e o que mudou.
+2. Diferenciar gostar de ficar sozinho (escolha que faz bem) de se isolar por sofrimento.
+3. Sugerir um contato pequeno com uma pessoa de confiança.
+4. Investigar tristeza, desesperança e pensamentos de morte; sugerir psicólogo.
+"""
+
+evitar = ["'você é antissocial'", "forçar a pessoa a sair",]
+
+resposta_modelo = """
+Às vezes, quando está tudo pesado, a gente se fecha para não incomodar ninguém, mas você não é um
+incômodo. Desde quando você tem se afastado assim? Tem uma pessoa, só uma, com quem você se sentiria
+bem em trocar uma mensagem hoje? Se isso estiver vindo junto com muita tristeza, um psicólogo pode ajudar.
+"""

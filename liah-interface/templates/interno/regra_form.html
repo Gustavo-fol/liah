@@ -1,0 +1,47 @@
+{% extends "base_interno.html" %}
+{% block titulo %}{% if regra %}Editar regra{% else %}Nova regra{% endif %}{% endblock %}
+{% block conteudo %}
+<a class="voltar" href="{% url 'interno:dicionario' %}">&larr; Voltar ao dicionário</a>
+<h1>{% if regra %}Editar regra{% else %}Nova regra{% endif %}</h1>
+{% if regra %}<p class="nota">Origem: {{ regra.get_origem_display }} · Atualizada em {{ regra.atualizada_em|date:"d/m/Y H:i" }}</p>{% endif %}
+{% if regra.veio_do_arquivo %}
+<div class="alerta">Este contexto vem do arquivo <code>liah-dicionario/{{ regra.arquivo }}</code> (id <code>{{ regra.chave }}</code>).
+  Mude <strong>no arquivo</strong>: o que for salvo aqui é substituído na próxima importação.</div>
+{% endif %}
+
+<form method="post" class="formulario" novalidate>
+  {% csrf_token %}
+  {% include "contas/_erros_gerais.html" %}
+  <fieldset>
+    <legend>O que observar</legend>
+    <div class="linha">
+      {% include "contas/_campo.html" with campo=form.titulo %}
+      {% include "contas/_campo.html" with campo=form.categoria %}
+    </div>
+    {% include "contas/_campo.html" with campo=form.sinais %}
+    {% include "contas/_campo.html" with campo=form.exemplos %}
+  </fieldset>
+  <fieldset>
+    <legend>Como agir</legend>
+    <div class="linha">
+      {% include "contas/_campo.html" with campo=form.nivel_risco %}
+      {% include "contas/_campo.html" with campo=form.encaminhamento %}
+    </div>
+    {% include "contas/_campo.html" with campo=form.orientacao %}
+  </fieldset>
+  <fieldset>
+    <legend>Revisão do psicólogo</legend>
+    {% include "contas/_campo.html" with campo=form.revisado_por_psicologo %}
+    {% include "contas/_campo.html" with campo=form.observacoes_psicologo %}
+    {% include "contas/_campo.html" with campo=form.status %}
+  </fieldset>
+  <button type="submit" class="botao">Salvar regra</button>
+</form>
+
+{% if regra %}
+<form method="post" action="{% url 'interno:regra_apagar' regra.pk %}" data-confirmar="Apagar esta regra?">
+  {% csrf_token %}
+  <button type="submit" class="botao perigo">Apagar regra</button>
+</form>
+{% endif %}
+{% endblock %}

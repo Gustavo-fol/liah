@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% load static %}
+{% block titulo %}Liah · robô de apoio emocional{% endblock %}
+{% block estilos %}<link rel="stylesheet" href="{% static 'css/sobre.css' %}">{% endblock %}
+{% block classe_main %}pagina-sobre{% endblock %}
+
+{% block conteudo %}
+{% comment %}
+  PÁGINA DE APRESENTAÇÃO (/inicio/): uma tela só, para a feira e para quem recebe o link.
+  O endereço principal "/" continua indo direto para o chat.
+{% endcomment %}
+<section class="sobre-bloco sobre-hero">
+  <div class="sobre-hero-texto">
+    <h1>Oi, eu sou a Liah.</h1>
+    <p class="sobre-lead">Uma inteligência artificial de apoio emocional que conversa por texto e por voz
+      e que, em breve, vai morar num pequeno robô.</p>
+    <ul>
+      <li>Converse agora, sem conta: {{ limite_visitante }} mensagens grátis por dia.</li>
+      <li>Com uma conta grátis, suas conversas ficam guardadas e <strong>criptografadas</strong>.</li>
+      <li>Em qualquer sinal de perigo, a Liah indica ajuda de verdade: <strong>188</strong> (CVV) e <strong>192</strong> (SAMU).</li>
+    </ul>
+    <div class="botoes">
+      <a class="botao" href="{% url 'nucleo:chat' %}">Conversar com a Liah</a>
+      <a class="botao contorno" href="{% url 'nucleo:sobre' %}">Como ela funciona</a>
+    </div>
+    <p class="sobre-lead"><small>Versão {{ resumo.versao }} · etapa {{ resumo.etapa }}: {{ resumo.etapa_nome }} · {{ resumo.ia }}</small></p>
+  </div>
+  <div class="sobre-rosto" aria-hidden="true">
+    <div class="sobre-cabeca"><span class="olho"></span><span class="olho"></span></div>
+    <div class="sobre-corpo">Liah<small>online</small></div>
+  </div>
+</section>
+{% endblock %}

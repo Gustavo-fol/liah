@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block titulo %}Cadastro - Liah{% endblock %}
+{% block conteudo %}
+{% include "contas/_voltar.html" with destino="contas:cadastro" texto="Voltar" %}
+<h1>Criar minha conta</h1>
+<p class="sub">Para quem tem 12 anos ou mais.</p>
+
+<!-- novalidate: deixa o Django validar e mostrar as mensagens em português -->
+<form method="post" class="formulario" novalidate>
+  {% csrf_token %}
+  {% include "contas/_erros_gerais.html" %}
+
+  <fieldset>
+    <legend>Seus dados</legend>
+    <div class="linha">
+      {% include "contas/_campo.html" with campo=form.first_name %}
+      {% include "contas/_campo.html" with campo=form.last_name %}
+    </div>
+    {% include "contas/_campo.html" with campo=form.email %}
+    <div class="linha">
+      {% include "contas/_campo.html" with campo=form.data_nascimento %}
+      {% include "contas/_campo.html" with campo=form.cpf %}
+    </div>
+    {% include "contas/_campo.html" with campo=form.password1 %}
+    {% include "contas/_campo.html" with campo=form.password2 %}
+  </fieldset>
+
+  <fieldset>
+    <legend>Responsável <span class="nota">(preencha só se tiver menos de 18 anos)</span></legend>
+    {% include "contas/_campo.html" with campo=form.nome_responsavel %}
+    <div class="linha">
+      {% include "contas/_campo.html" with campo=form.email_responsavel %}
+      {% include "contas/_campo.html" with campo=form.cpf_responsavel %}
+    </div>
+  </fieldset>
+
+  <fieldset class="consentimentos">
+    <legend>Autorizações</legend>
+    <p class="nota">Leia os <a href="{% url 'contas:termos' %}" target="_blank">Termos de Uso</a> e a
+       <a href="{% url 'contas:politica_privacidade' %}" target="_blank">Política de Privacidade</a>.</p>
+    {% include "contas/_campo.html" with campo=form.aceite_termos %}
+    {% include "contas/_campo.html" with campo=form.aceite_dados_sensiveis %}
+    {% include "contas/_campo.html" with campo=form.aceite_treino_ia %}
+  </fieldset>
+
+  <button type="submit" class="botao">Criar conta</button>
+</form>
+{% endblock %}

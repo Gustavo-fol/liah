@@ -1,0 +1,10 @@
+Olá{% if user.first_name %}, {{ user.first_name }}{% endif %}!
+
+Recebemos um pedido para criar uma nova senha na sua conta da Liah.
+Para continuar, acesse o link abaixo:
+
+{{ protocol }}://{{ domain }}{% url 'contas:senha_redefinir' uidb64=uid token=token %}
+
+Se não foi você que pediu, ignore este e-mail: sua senha continua a mesma.
+
+Liah

@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block titulo %}Conta para criança - Liah{% endblock %}
+{% block conteudo %}
+{% include "contas/_voltar.html" with destino="contas:painel" texto="Voltar ao painel" %}
+<h1>Criar conta para uma criança</h1>
+<p class="sub">Para menores de 12 anos. Você, {{ user.first_name }}, será o responsável por esta conta.</p>
+
+<form method="post" class="formulario" novalidate>
+  {% csrf_token %}
+  {% include "contas/_erros_gerais.html" %}
+
+  <fieldset>
+    <legend>Dados da criança</legend>
+    <div class="linha">
+      {% include "contas/_campo.html" with campo=form.first_name %}
+      {% include "contas/_campo.html" with campo=form.last_name %}
+    </div>
+    <div class="linha">
+      {% include "contas/_campo.html" with campo=form.data_nascimento %}
+      {% include "contas/_campo.html" with campo=form.cpf %}
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <legend>Login da criança</legend>
+    {% include "contas/_campo.html" with campo=form.email %}
+    {% include "contas/_campo.html" with campo=form.password1 %}
+    {% include "contas/_campo.html" with campo=form.password2 %}
+  </fieldset>
+
+  <fieldset class="consentimentos">
+    <legend>Autorizações do responsável</legend>
+    {% include "contas/_campo.html" with campo=form.aceite_termos %}
+    {% include "contas/_campo.html" with campo=form.aceite_dados_sensiveis %}
+    {% include "contas/_campo.html" with campo=form.aceite_treino_ia %}
+  </fieldset>
+
+  <button type="submit" class="botao">Criar conta da criança</button>
+</form>
+{% endblock %}

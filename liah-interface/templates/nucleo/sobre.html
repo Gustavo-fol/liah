@@ -1,0 +1,101 @@
+{% extends "base.html" %}
+{% load static %}
+{% block titulo %}Sobre a Liah{% endblock %}
+{% block estilos %}<link rel="stylesheet" href="{% static 'css/sobre.css' %}">{% endblock %}
+{% block classe_main %}pagina-sobre{% endblock %}
+
+{% block conteudo %}
+{# ------------------------------------------------ APRESENTAÇÃO #}
+<section class="sobre-bloco sobre-hero">
+  <div class="sobre-hero-texto">
+    <h1>Sobre a Liah</h1>
+    <p class="sobre-lead">Uma assistente de apoio emocional que conversa por texto e por voz e que, no futuro,
+      vai morar num pequeno robô. Aqui você vê como ela pensa e em que ponto o projeto está.</p>
+    <blockquote class="sobre-citacao">A Liah é uma inteligência artificial em desenvolvimento. Ela acolhe e orienta,
+      mas não substitui psicólogos. Em crise, ligue <strong>188</strong> (CVV) ou <strong>192</strong> (SAMU).</blockquote>
+    <p>O Liah-Robo é um robô interativo compacto, de até cerca de 40 cm, criado para estudar a comunicação
+      entre pessoas e máquinas. O projeto é construído em módulos: primeiro o software, depois voz, corpo e eletrônica.</p>
+    <div class="botoes">
+      <a class="botao" href="{% url 'nucleo:chat' %}">Conversar com a Liah</a>
+      {% if not user.is_authenticated %}<a class="botao contorno" href="{% url 'contas:cadastro' %}">Criar conta grátis</a>{% endif %}
+    </div>
+  </div>
+  <div class="sobre-rosto" aria-hidden="true">
+    <div class="sobre-cabeca"><span class="olho"></span><span class="olho"></span></div>
+    <div class="sobre-corpo">Liah<small>online</small></div>
+  </div>
+</section>
+
+{# ------------------------------------------------ COMO DECIDE #}
+<section class="sobre-bloco" aria-labelledby="titulo-caminho">
+  <h2 id="titulo-caminho">Como a Liah decide o que responder</h2>
+  <p class="sobre-sub">Cada mensagem passa pelo mesmo caminho. Toque em uma etapa para entender o que ela faz.
+    Depois de conversar com a Liah na <a href="{% url 'nucleo:chat' %}">página de conversa</a>, o caminho usado fica aceso aqui.</p>
+
+  <div class="caminho" id="caminho" data-caminhos="{{ caminhos_json }}" role="tablist" aria-label="Etapas do caminho">
+    {% for chave, nome, sub, texto in pipeline %}
+      <button type="button" class="etapa" role="tab" id="etapa-{{ chave }}" data-etapa="{{ chave }}"
+              aria-selected="{% if forloop.first %}true{% else %}false{% endif %}" aria-controls="explicacao">
+        <strong>{{ nome }}</strong><small>{{ sub }}</small>
+      </button>
+    {% endfor %}
+  </div>
+
+  <div class="explicacao" id="explicacao" role="tabpanel" aria-live="polite">
+    {% for chave, nome, sub, texto in pipeline %}
+      <p data-texto="{{ chave }}" {% if not forloop.first %}hidden{% endif %}>{{ texto }}</p>
+    {% endfor %}
+    <p class="ultima" id="ultima"><strong>Última mensagem desta visita:</strong> <span>nenhuma ainda.</span></p>
+  </div>
+</section>
+
+{# ------------------------------------------------ O QUE FUNCIONA #}
+<section class="sobre-bloco" aria-labelledby="titulo-partes">
+  <h2 id="titulo-partes">O que já funciona e o que ainda não existe</h2>
+  <p class="sobre-sub">O projeto é modular e está em evolução. Esta tabela mostra cada parte com a situação real, calculada agora.</p>
+  <div class="tabela-rolagem">
+    <table class="tabela-partes">
+      <thead><tr><th scope="col">Parte</th><th scope="col">Situação</th><th scope="col">Detalhe</th></tr></thead>
+      <tbody>
+        {% for parte, situacao, detalhe in partes %}
+          <tr>
+            <th scope="row">{{ parte }}</th>
+            <td><span class="situacao situacao-{{ situacao|slugify }}">{{ situacao }}</span></td>
+            <td>{{ detalhe }}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  <p class="nota">Servidor respondeu agora: versão {{ resumo.versao }}, {{ resumo.ia }},
+    {{ resumo.regras_aprovadas }} regra(s) do dicionário aprovada(s), visitantes com {{ limite_visitante }} mensagens por dia.</p>
+</section>
+
+{# ------------------------------------------------ ETAPAS #}
+<section class="sobre-bloco" aria-labelledby="titulo-etapas">
+  <h2 id="titulo-etapas">Etapas do projeto</h2>
+  <ol class="linha-tempo">
+    {% for e in etapas %}
+      <li class="{{ e.estado }}">
+        <span class="numero" aria-hidden="true">{% if e.estado == "feita" %}&#10003;{% else %}{{ e.n }}{% endif %}</span>
+        <div>
+          <strong>{{ e.nome }}</strong>
+          {% if e.estado == "agora" %}<span class="selo-agora">agora</span>{% elif e.estado == "feita" %}<span class="selo-feita">concluída</span>{% endif %}
+          <p>{{ e.texto }}</p>
+        </div>
+      </li>
+    {% endfor %}
+  </ol>
+</section>
+
+{# ------------------------------------------------ PRIVACIDADE #}
+<section class="sobre-bloco sobre-final">
+  <h2>Seus dados</h2>
+  <p>As conversas ficam cifradas na sua conta e só você as vê: nem a equipe lê o que você escreveu.
+    Você pode exportar ou apagar tudo quando quiser. Saiba mais na
+    <a href="{% url 'contas:politica_privacidade' %}">Política de Privacidade</a>.</p>
+  <p class="nota"><strong>Liah-Robo</strong> · protótipo em desenvolvimento · etapa {{ resumo.etapa }} de 7: {{ resumo.etapa_nome|lower }}.</p>
+</section>
+{% endblock %}
+
+{% block scripts %}<script src="{% static 'js/sobre.js' %}" defer></script>{% endblock %}

@@ -1,0 +1,106 @@
+categoria = "autoestima"
+
+[[contexto]]
+id = "autoestima-autocritica"
+titulo = "Autocrítica intensa e sentimento de inutilidade"
+nivel_risco = "atencao"
+encaminhamento = "psicologo"
+aprovado = false
+revisado_por = ""
+
+situacao = """
+A pessoa fala de si com muito desprezo: burra, inútil, fracassada, que não serve para nada.
+A autocrítica constante alimenta tristeza e, em casos graves, desesperança.
+"""
+
+palavras_chave = ["inutil", "burro", "burra", "fracassado", "fracassada", "nao sirvo pra nada", "nao presto",
+  "sou um lixo", "me odeio", "odeio quem eu sou", "decepcao", "incapaz", "nunca faco nada certo",]
+
+sinais_diretos = ["se chama de inútil ou fracassada", "diz que se odeia",]
+
+entrelinhas = [
+  "desvaloriza conquistas ('foi sorte')",
+  "pede desculpas o tempo todo",
+  "se compara sempre para baixo",
+  "acha que os outros só o toleram",
+]
+
+falas_diretas = ["eu sou um fracasso", "me odeio",]
+
+falas_sutis = [
+  "passei na prova, mas foi sorte, a prova tava fácil",
+  "desculpa te encher com isso, desculpa mesmo",
+  "meus amigos só andam comigo por pena",
+  "meu irmão faz tudo certo, eu sou a decepção da família",
+  "nem sei por que eu tento",
+]
+
+nao_confundir = ["sou péssimo em matemática kkk", "fui burro de esquecer o guarda-chuva",]
+
+como_responder = """
+1. Não concordar com a autocrítica, mas também não discutir: acolher a dor por trás.
+2. Perguntar como trataria um amigo que dissesse isso de si mesmo.
+3. Pedir uma coisa pequena que a pessoa fez bem recentemente.
+4. Sugerir psicólogo; ficar atento a desesperança e pensamentos de morte.
+"""
+
+evitar = ["elogios exagerados e vazios", "'para de besteira'",]
+
+resposta_modelo = """
+Dá para sentir o quanto você está sendo duro consigo mesmo. Se um amigo seu falasse assim dele, o que
+você diria para ele? Você não precisa acreditar em tudo que essa voz crítica diz. Um psicólogo pode te
+ajudar muito a lidar com ela. Me conta uma coisa, mesmo pequena, que você fez bem essa semana?
+"""
+
+[[contexto]]
+id = "autoestima-imagem-corporal"
+titulo = "Insatisfação com o corpo e a aparência"
+nivel_risco = "nenhum"
+encaminhamento = "psicologo"
+aprovado = false
+revisado_por = ""
+
+situacao = """
+A pessoa está muito insatisfeita com o próprio corpo, evita fotos, espelhos ou lugares por causa
+da aparência, e se compara com padrões das redes sociais. Pode ser a porta de entrada para
+transtornos alimentares: nesses casos, não dar dicas de dieta, peso ou exercícios.
+"""
+
+palavras_chave = ["gorda", "gordo", "feia", "feio", "corpo", "espelho", "foto", "fotos", "peso", "balanca",
+  "dieta", "nao gosto do meu corpo", "barriga", "comparando", "padrao",]
+
+sinais_diretos = ["diz que odeia o próprio corpo", "diz que é feio ou feia",]
+
+entrelinhas = [
+  "evita fotos, piscina, praia, roupas justas",
+  "se pesa várias vezes por dia",
+  "fala de comida com culpa",
+  "compara-se com influenciadores",
+]
+
+falas_diretas = ["odeio meu corpo", "me acho muito feia",]
+
+falas_sutis = [
+  "apaguei todas as minhas fotos do insta",
+  "não vou na piscina, prefiro ficar em casa",
+  "comi e agora tô me sentindo culpada",
+  "todo mundo no tiktok tem o corpo perfeito, menos eu",
+]
+
+nao_confundir = ["que roupa combina com calça bege?", "quero começar a malhar por saúde",]
+
+como_responder = """
+1. Acolher a dor sem falar de peso, calorias ou dietas.
+2. Questionar com cuidado os padrões irreais das redes.
+3. Se houver culpa ao comer, restrição, compensação ou pesagem obsessiva, sugerir psicólogo e
+   procurar ajuda especializada em transtornos alimentares.
+"""
+
+evitar = ["dar dicas de dieta, peso ou exercício", "elogiar o corpo ou falar de números",]
+
+resposta_modelo = """
+Sinto muito que você esteja se sentindo assim com o seu corpo. As redes mostram uma versão editada e
+irreal das pessoas, e é muito fácil se comparar e sair machucada. O seu valor não está na sua aparência.
+Se essa insatisfação está mexendo com a forma como você come ou com a sua rotina, conversar com um
+psicólogo pode ajudar bastante.
+"""

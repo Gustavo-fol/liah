@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block titulo %}Complete seu cadastro - Liah{% endblock %}
+{% block conteudo %}
+{% include "contas/_voltar.html" with destino="contas:entrar" texto="Cancelar e voltar para o login" %}
+<h1>Quase lá, {{ perfil.first_name|default:"bem-vindo(a)" }}!</h1>
+<p class="sub">Você entrou com o Google ({{ perfil.email }}). Para usar a Liah, complete seu cadastro.</p>
+
+<form method="post" class="formulario" novalidate>
+  {% csrf_token %}
+  {% include "contas/_erros_gerais.html" %}
+
+  <fieldset>
+    <legend>Seus dados</legend>
+    <div class="linha">
+      {% include "contas/_campo.html" with campo=form.data_nascimento %}
+      {% include "contas/_campo.html" with campo=form.cpf %}
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <legend>Responsável <span class="nota">(preencha só se tiver menos de 18 anos)</span></legend>
+    {% include "contas/_campo.html" with campo=form.nome_responsavel %}
+    <div class="linha">
+      {% include "contas/_campo.html" with campo=form.email_responsavel %}
+      {% include "contas/_campo.html" with campo=form.cpf_responsavel %}
+    </div>
+  </fieldset>
+
+  <fieldset class="consentimentos">
+    <legend>Autorizações</legend>
+    <p class="nota">Leia os <a href="{% url 'contas:termos' %}" target="_blank">Termos de Uso</a> e a
+       <a href="{% url 'contas:politica_privacidade' %}" target="_blank">Política de Privacidade</a>.</p>
+    {% include "contas/_campo.html" with campo=form.aceite_termos %}
+    {% include "contas/_campo.html" with campo=form.aceite_dados_sensiveis %}
+    {% include "contas/_campo.html" with campo=form.aceite_treino_ia %}
+  </fieldset>
+
+  <button type="submit" class="botao">Concluir cadastro</button>
+</form>
+{% endblock %}
