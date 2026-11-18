@@ -105,6 +105,12 @@
           method: "POST", body: dados, credentials: "same-origin", headers: { "X-CSRFToken": tokenCsrf() },
         });
         var json = await r.json().catch(function () { return {}; });
+        if (r.status === 503 && Reconhecimento) {
+          // O servidor ainda não tem a voz configurada: volta para o reconhecimento do navegador.
+          usarServidor = false;
+          mostrarEstado("Toque no microfone e fale de novo.");
+          return;
+        }
         if (!r.ok || !json.texto) { mostrarEstado(json.erro || "Não entendi. Tente de novo."); return; }
         mostrarEstado(json.texto);
         responderA(json.texto);
@@ -150,7 +156,9 @@
       };
       // Sem o serviço de voz do navegador (Raspberry Pi, Chromium sem chaves do Google):
       // a partir de agora usa o servidor da Liah.
-      if ((evento.error === "network" || evento.error === "service-not-allowed") && podeGravar) {
+      // Só troca se o navegador NÃO tiver o serviço (Raspberry Pi). Uma queda de internet
+      // passageira no Chrome normal não deve mudar o modo para sempre.
+      if (evento.error === "service-not-allowed" && podeGravar) {
         usarServidor = true;
         mostrarEstado("Vou usar o servidor da Liah para ouvir. Toque no microfone de novo.");
         return;
@@ -195,7 +203,7 @@
         headers: { "Content-Type": "application/json", "X-CSRFToken": tokenCsrf() },
         body: JSON.stringify({ texto: texto }),
       });
-      if (!r.ok) { mostrarEstado("Toque no microfone para falar"); return; }
+      if (!r.ok) { mostrarEstado("A voz da Liah não está disponível agora. A resposta está na tela."); return; }
       var url = URL.createObjectURL(await r.blob());
       audioServidor = new Audio(url);
       audioServidor.onplay = function () { falando = true; mostrarEstado("Liah está falando..."); };
@@ -210,8 +218,9 @@
 
   function falar(texto) {
     if (!modoVoz()) { mostrarEstado("Toque no microfone para falar"); return; }
-    var semVozLocal = !window.speechSynthesis || !escolherVoz();
-    if (semVozLocal && urlFalar) { pararDeFalar(); falarPeloServidor(texto); return; }
+    // A voz do NAVEGADOR vem sempre primeiro (é grátis e não depende da internet).
+    // A do servidor só entra se o aparelho não tiver síntese de voz nenhuma (ex.: alguns Raspberry Pi).
+    if (!window.speechSynthesis && urlFalar) { falarPeloServidor(texto); return; }
     if (!window.speechSynthesis) { mostrarEstado("Toque no microfone para falar"); return; }
     pararDeFalar();
     var fala = new SpeechSynthesisUtterance(texto.replace(/[•*#]/g, ""));
